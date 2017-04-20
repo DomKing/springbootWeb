@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--mysql 连接数据库jar-->
+    <classPathEntry location="D:\Program Files\MySQL\Connector J 5.1.31\mysql-connector-java-5.1.31-bin.jar" />
+    <context id="testTables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false" />
+            <!--是否不生成时间，一定要true，不然就会变，就会有变更记录-->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/sellprojectlog"
+                        userId="root"
+                        password="abc123#">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <!--当数据库小数Decimal或Number类型小数点后为0位时，是否仍强制使用BigDecimal类型，默认false-->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="org.prcode.business.basedomain.oosLogger.domain"
+                            targetProject="src/main/java" >
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 类setter方法对String做trim处理 -->
+            <property name="trimStrings" value="true" />
+            <!--是否生成构造器-->
+            <property name="constructorBased" value="false"/>
+            <!--继承的基类-->
+            <property name="rootClass" value="org.prcode.basedomain.base.BaseDomain"/>
+        </javaModelGenerator>
+
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mybatis.business.mapper" targetProject="src/main/resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.prcode.business.basedomain.oosLogger.dao" targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 指定数据库表, 可以多个，则多个table标签 -->
+        <!--如果xml中没有@mbg.generated，重新生成就会在后面追加着写-->
+        <!--alias只是在sql的查询中字段加前缀-->
+        <table schema="" tableName="t_oos_logger"
+               domainObjectName="OosLogger"
+               alias="oosLogger"
+               enableDeleteByExample="false"
+               enableDeleteByPrimaryKey="false">
+            <property name="useActualColumnNames" value="false"/>
+            <columnRenamingRule searchString="^f|^t" replaceString=""/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.prcode.business.support.basic.security.dao.SecurityDao">
+
+    <resultMap id="customerUserDetailResMap" type="org.prcode.business.support.basic.security.domain.CustomerUserDetail">
+        <id column="userId" property="id" javaType="java.lang.String"/>
+        <result column="username" property="username" javaType="java.lang.String"/>
+        <result column="password" property="password" javaType="java.lang.String"/>
+        <result column="accountType" property="accountType" javaType="java.lang.Byte"/>
+        <collection property="roles" resultMap="userRoleResMap"/>
+    </resultMap>
+    <resultMap id="userRoleResMap" type="org.prcode.business.basedomain.role.domain.Role">
+        <id column="roleId" property="id" javaType="java.lang.String"/>
+        <result column="roleName" property="roleName" javaType="java.lang.String"/>
+        <result column="roleCode" property="roleCode" javaType="java.lang.String"/>
+    </resultMap>
+
+    <resultMap id="customerUrlRolesResMap" type="org.prcode.business.support.basic.security.domain.CustomerUrlRoles">
+        <id column="url" property="url" javaType="java.lang.String"/>
+        <collection property="roles" resultMap="userRoleResMap"/>
+    </resultMap>
+
+    <select id="getUserDetailByName" resultMap="customerUserDetailResMap" parameterType="map">
+        select u.f_id userId, ln.f_user_account username, ln.f_user_pwd password,ln.f_type accountType,
+                r.f_role_code roleCode, r.f_id roleId, r.f_role_name roleName
+          from t_login_no ln
+        inner join t_user u ON ln.f_user_id = u.f_id and u.f_sys_del_state = 0
+        inner join t_user_role ur ON ur.f_sys_del_state = 0 and ur.f_user_id = u.f_id
+        inner join t_role r ON r.f_sys_del_state = 0 and ur.f_role_id = r.f_id
+        where ln.f_sys_del_state = 0 and ln.f_user_account = #{username} and ln.f_type = #{accountType}
+        order by ln.f_id desc , u.f_id desc limit 1
+    </select>
+
+    <select id="getUrlRoles" resultMap="customerUrlRolesResMap">
+        select ru.f_url url, r.f_id roleId, r.f_role_name roleName, r.f_role_code roleCode
+         from t_role_resource rr
+        inner join t_resource_url ru on ru.f_sys_del_state = 0 and ru.f_id = rr.f_resource_url_id
+        inner join t_role r on r.f_sys_del_state = 0 and r.f_id = rr.f_role_id
+        where rr.f_sys_del_state = 0 and r.f_system_code = #{systemCode} and ru.f_system_code = #{systemCode}
+    </select>
+
+</mapper>
