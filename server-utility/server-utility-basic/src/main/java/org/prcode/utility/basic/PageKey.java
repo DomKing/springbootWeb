@@ -8,9 +8,9 @@ package org.prcode.utility.basic;
  */
 public class PageKey {
     //页码，从1开始，默认第一页
-    private int page = 1;
-    //每页查询数量，默认每页15条
-    private int pageSize = 15;
+    public static int page = 1;
+    //每页查询数量，默认每页10条
+    public static int pageSize = 10;
 
     public int getPage() {
         return page;

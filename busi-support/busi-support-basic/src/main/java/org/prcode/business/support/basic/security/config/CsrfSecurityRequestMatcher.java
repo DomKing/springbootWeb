@@ -1,13 +1,9 @@
 package org.prcode.business.support.basic.security.config;
 
-import org.prcode.business.basedomain.resourceUrl.dao.ResourceUrlMapper;
 import org.prcode.business.basedomain.resourceUrl.domain.ResourceUrl;
-import org.prcode.business.basedomain.resourceUrl.domain.ResourceUrlExample;
-import org.prcode.business.support.basic.SystemConstant;
+import org.prcode.business.support.basic.security.service.ISecurityService;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +15,16 @@ import java.util.regex.Pattern;
  * @Auther: kangduo
  * @Description: (csrf)
  */
-@Component
 public class CsrfSecurityRequestMatcher implements RequestMatcher {
 
-    @Resource
-    private ResourceUrlMapper resourceUrlMapper;
+    private ISecurityService securityService;
+    private String systemCode;
     private Pattern allowedMethods = Pattern.compile("^(GET|HEAD|TRACE|OPTIONS)$");
+
+    public CsrfSecurityRequestMatcher(ISecurityService securityService, String systemCode) {
+        this.securityService = securityService;
+        this.systemCode = systemCode;
+    }
 
     @Override
     public boolean matches(HttpServletRequest request) {
@@ -43,11 +43,7 @@ public class CsrfSecurityRequestMatcher implements RequestMatcher {
     private List<String> getIncludeUrls() {
         List<String> includeUrls = null;
         //查询需要csrf校验的链接，并添加
-        ResourceUrlExample example = new ResourceUrlExample();
-        example.createCriteria()
-                .andSysDelStateEqualTo(false)
-                .andNeedCsrfEqualTo(true).andSystemCodeEqualTo(SystemConstant.OOS_SYSTEM);
-        List<ResourceUrl> resourceUrls = resourceUrlMapper.selectByExample(example);
+        List<ResourceUrl> resourceUrls = securityService.getCsrfResourceUrls(systemCode);
         if (resourceUrls != null && resourceUrls.size() > 0) {
             includeUrls = new ArrayList<>(resourceUrls.size());
             for (ResourceUrl resourceUrl : resourceUrls) {

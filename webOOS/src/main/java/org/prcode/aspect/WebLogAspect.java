@@ -1,12 +1,26 @@
 package org.prcode.aspect;
 
 import com.alibaba.fastjson.JSON;
+
+import io.swagger.annotations.ApiOperation;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Date;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.prcode.business.support.basic.security.domain.CustomerUserDetail;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
-import org.prcode.log.basedomain.oosLogger.domain.OosLogger;
 import org.prcode.utility.basic.support.ResponseStatus;
 import org.prcode.utility.exception.BusinessException;
 import org.prcode.utility.exception.LoginTimeout;
@@ -18,11 +32,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.Date;
 
 /**
  * @ClassName: WebLogAspect
@@ -40,24 +49,36 @@ public class WebLogAspect {
 
     private Logger logger = Logger.getLogger(getClass());
 
-    private ThreadLocal<OosLogger> commLoggerThreadLocal = new ThreadLocal<>();
+    private ThreadLocal<WebOosLog> commLoggerThreadLocal = new ThreadLocal<>();
 
     @Pointcut("execution(public * org.prcode.web..*.*(..))")
-    public void webLog(){}
+    public void webLog() {
+    }
 
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
-        logger.debug("***************请求开始***************");
+
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        ApiOperation operation = method.getAnnotation(ApiOperation.class);
+        WebOosLog commLogger = new WebOosLog();
+        if (operation != null) {
+            commLogger.setActionDesc(operation.value());
+        } else {
+            commLogger.setActionDesc("");
+        }
+        logger.debug("***************请求" + commLogger.getActionDesc() + "开始***************");
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
 
-        OosLogger commLogger = new OosLogger();
+
         commLogger.setActionUrlAll(request.getRequestURL().toString());
         commLogger.setActionUrlTail(request.getServletPath());
         commLogger.setRequestParams(JSON.toJSONString(request.getParameterMap()));
         commLogger.setIp(IPUtil.getRealIP(request));
         commLogger.setReqStartTime(new Date());
+
 
         CustomerUserDetail userDetail = SecurityUtil.getCurrUserDetail();
         if (userDetail != null) {
@@ -80,7 +101,7 @@ public class WebLogAspect {
     @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容
-        OosLogger commLogger = commLoggerThreadLocal.get();
+        WebOosLog commLogger = commLoggerThreadLocal.get();
         commLogger.setActionResCode(ResponseStatus.SUCCESS);
         commLogger.setReqEndTime(new Date());
         commLogger.setReqDealTime((int) (commLogger.getReqEndTime().getTime() - commLogger.getReqStartTime().getTime()));
@@ -91,13 +112,13 @@ public class WebLogAspect {
 
         logger.debug("RESPONSE : " + JSON.toJSONString(ret));
         logger.debug("SPEND TIME : " + commLogger.getReqDealTime() + "ms");
-        logger.debug("***************请求结束***************");
+        logger.debug("***************请求" + commLogger.getActionDesc() + "结束***************");
     }
 
-    @AfterThrowing(throwing="ex", pointcut = "webLog()")
+    @AfterThrowing(throwing = "ex", pointcut = "webLog()")
     public void doAfterThrowing(Throwable ex) {
         //有异常
-        OosLogger commLogger = commLoggerThreadLocal.get();
+        WebOosLog commLogger = commLoggerThreadLocal.get();
         if (ex instanceof BusinessException) {
             commLogger.setActionResCode(ResponseStatus.BUSINESS_FAILED);
         } else if (ex instanceof ValidateException) {
@@ -118,7 +139,7 @@ public class WebLogAspect {
 
         logger.debug("EXCEPTION : " + ExceptionUtil.parseException(ex));
         logger.debug("SPEND TIME : " + commLogger.getReqDealTime() + "ms");
-        logger.debug("***************请求结束***************");
+        logger.debug("***************请求" + commLogger.getActionDesc() + "结束***************");
     }
 
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
@@ -21,8 +20,6 @@ public class MessageConverterConfig {
 
     @Resource
     private ObjectMapper objectMapper;
-    @Resource
-    private RedisConnectionFactory redisConnectionFactory;
     @Resource
     private RedisTemplate redisTemplate;
 

@@ -62,7 +62,9 @@ public class CustomerSecurityMetadataSource implements FilterInvocationSecurityM
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
         String url = ((FilterInvocation) o).getRequestUrl();
 
-        logger.debug("request url is  " + url);
+        if (!url.contains("/js/") && !url.contains("/html/") && !url.contains("/css/") && !url.contains("/images/")) {
+            logger.debug("request url is  " + url);
+        }
 
         if (resourceMap == null) {
             resourceMap = loadResourceMatchAuthority();

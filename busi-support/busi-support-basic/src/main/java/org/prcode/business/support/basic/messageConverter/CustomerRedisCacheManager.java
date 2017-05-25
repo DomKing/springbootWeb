@@ -1,14 +1,13 @@
 package org.prcode.business.support.basic.messageConverter;
 
 import org.prcode.business.support.basic.messageConverter.annotation.CacheDuration;
-import org.springframework.beans.BeansException;
+import org.prcode.utility.util.ClassUtil;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.core.RedisOperations;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Method;
@@ -22,33 +21,30 @@ import static org.springframework.core.annotation.AnnotationUtils.findAnnotation
  * @Auther: kangduo
  * @Description: (自定义redisCacheManager)
  */
-public class CustomerRedisCacheManager extends RedisCacheManager implements ApplicationContextAware, InitializingBean {
-    private ApplicationContext applicationContext;
+public class CustomerRedisCacheManager extends RedisCacheManager implements InitializingBean {
 
+    private static final String BASE_SCAN_PACKAGE = "org.prcode.business";
     public CustomerRedisCacheManager(RedisOperations redisOperations) {
         super(redisOperations);
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-
-    @Override
     public void afterPropertiesSet() {
-        parseCacheDuration(applicationContext);
+        parseCacheDuration();
     }
 
-    private void parseCacheDuration(ApplicationContext applicationContext) {
+    private void parseCacheDuration() {
         final Map<String, Long> cacheExpires = new HashMap<>();
-        String[] beanNames = applicationContext.getBeanNamesForType(Object.class);
-        for (String beanName : beanNames) {
-            final Class clazz = applicationContext.getType(beanName);
-            addCacheExpires(clazz, cacheExpires);
+        //扫描service，这里不用spring直接获取bean，是因为有的service拿不到注解，原因暂未明
+        List<Class> classes = ClassUtil.scanPackage(BASE_SCAN_PACKAGE,
+                clazz -> findAnnotation(clazz, Service.class) != null);
+        for (Class aClass : classes) {
+            addCacheExpires(aClass, cacheExpires);
         }
         //设置有效期
         super.setExpires(cacheExpires);
     }
+
     private void addCacheExpires(final Class clazz, final Map<String, Long> cacheExpires) {
         ReflectionUtils.doWithMethods(clazz, method -> {
             ReflectionUtils.makeAccessible(method);

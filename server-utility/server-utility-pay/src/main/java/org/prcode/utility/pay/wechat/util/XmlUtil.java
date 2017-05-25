@@ -8,61 +8,66 @@ import org.jdom.input.SAXBuilder;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
- * @ClassName: XmlUtil
- * @Date: 2017-04-19 16:58
- * @Auther: kangduo
- * @Description: (xml工具)
+ * created on 2016-07-21 14:07
+ *
+ * @author nextyu
  */
-public class XmlUtil {
+public class XMLUtil {
+    /**
+     * 解析xml,返回第一级元素键值对。如果第一级元素有子节点，则此节点的值是子节点的xml数据。
+     *
+     * @param strxml
+     * @return
+     * @throws JDOMException
+     * @throws IOException
+     */
+    public static SortedMap<String, String> parseXML(String strxml) throws JDOMException, IOException {
+        strxml = strxml.replaceFirst("encoding=\".*\"", "encoding=\"UTF-8\"");
 
-    @SuppressWarnings("unchecked")
-    public static Map<String, String> turn2Map(String xml) throws JDOMException {
-        xml = xml.replaceFirst("encoding=\".*\"", "encoding=\"UTF-8\"");
-        if (null == xml || "".equals(xml.trim())) {
+        if (null == strxml || "".equals(strxml)) {
             return null;
         }
-        Map<String, String> m = new HashMap();
-        InputStream in = null;
-        try {
-            in = new ByteArrayInputStream(xml.getBytes("UTF-8"));
-            SAXBuilder builder = new SAXBuilder();
-            Document doc = builder.build(in);
-            Element root = doc.getRootElement();
-            List list = root.getChildren();
-            for (Object aList : list) {
-                Element e = (Element) aList;
-                String k = e.getName();
-                String v;
-                List children = e.getChildren();
-                if (children.isEmpty()) {
-                    v = e.getTextNormalize();
-                } else {
-                    v = getChildrenText(children);
-                }
-                m.put(k, v);
+
+        SortedMap<String, String> m = new TreeMap<>();
+
+        InputStream in = new ByteArrayInputStream(strxml.getBytes("UTF-8"));
+        SAXBuilder builder = new SAXBuilder();
+        Document doc = builder.build(in);
+        Element root = doc.getRootElement();
+        List list = root.getChildren();
+        for (Object aList : list) {
+            Element e = (Element) aList;
+            String k = e.getName();
+            String v;
+            List children = e.getChildren();
+            if (children.isEmpty()) {
+                v = e.getTextNormalize();
+            } else {
+                v = XMLUtil.getChildrenText(children);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            m.put(k, v);
         }
+
+        //关闭流
+        in.close();
+
         return m;
     }
 
+    /**
+     * 获取子结点的xml
+     *
+     * @param children
+     * @return String
+     */
     private static String getChildrenText(List children) {
         StringBuilder sb = new StringBuilder();
-        if(!children.isEmpty()) {
+        if (!children.isEmpty()) {
             for (Object aChildren : children) {
                 Element e = (Element) aChildren;
                 String name = e.getName();
@@ -70,12 +75,13 @@ public class XmlUtil {
                 List list = e.getChildren();
                 sb.append("<").append(name).append(">");
                 if (!list.isEmpty()) {
-                    sb.append(getChildrenText(list));
+                    sb.append(XMLUtil.getChildrenText(list));
                 }
                 sb.append(value);
                 sb.append("</").append(name).append(">");
             }
         }
+
         return sb.toString();
     }
 }

@@ -1,11 +1,11 @@
 package org.prcode.aspect;
 
+import javax.annotation.Resource;
+
 import org.prcode.log.basedomain.oosLogger.dao.OosLoggerMapper;
 import org.prcode.log.basedomain.oosLogger.domain.OosLogger;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * @ClassName: LoggerRecordService

@@ -8,11 +8,9 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @ClassName: CustomerAccessDecisionManager
@@ -41,14 +39,9 @@ public class CustomerAccessDecisionManager implements AccessDecisionManager {
         List<Role> roleList = securityService.getUserRoleList(userDetail.getUsername(), userDetail.getAccountType());
         for (ConfigAttribute configAttribute : collection) {
             needRole = configAttribute.getAttribute();
-            for (int i = 0; i < roleList.size(); i++) {
-//                Role role = roleList.get(i);
-                if (roleList.get(i) instanceof Role && needRole.equals(roleList.get(i).getRoleCode())) {
+            for (Role aRoleList : roleList) {
+                if (aRoleList != null && needRole.equals(aRoleList.getRoleCode())) {
                     return;
-                } else if (roleList.get(i) instanceof Map) {
-                    if (needRole.equals(((Map) roleList.get(i)).get("roleCode"))) {
-                        return;
-                    }
                 }
             }
         }

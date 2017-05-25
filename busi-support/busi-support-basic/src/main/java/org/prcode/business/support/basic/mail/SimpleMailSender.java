@@ -3,9 +3,18 @@ package org.prcode.business.support.basic.mail;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.apache.log4j.Logger;
-import org.prcode.business.support.basic.busiSupportCache.constant.OmsCommSysParaCode;
-import org.prcode.business.support.basic.busiSupportCache.service.IBusiSupportCacheService;
+import org.prcode.business.support.basic.cache.constant.CommSysParaCode;
+import org.prcode.business.support.basic.cache.service.ICommSysParaService;
 import org.prcode.utility.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,13 +22,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-
-import javax.annotation.Resource;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @ClassName: SimpleMailSender
@@ -42,10 +44,10 @@ public class SimpleMailSender {
     private Configuration configuration;
 
     @Resource
-    private IBusiSupportCacheService busiSupportCacheService;
+    private ICommSysParaService busiSupportCacheService;
 
     /**
-     * 异步发送邮件
+     * 异步发送邮件.
      *
      * @param subject      主题
      * @param sendToMails  发送人员列表 没有则不发
@@ -66,7 +68,7 @@ public class SimpleMailSender {
         }
 
         //如果没开启邮件发送，则不发邮件
-        String emailSwitch = busiSupportCacheService.getCommSysParaValue(OmsCommSysParaCode.Email_Switch);
+        String emailSwitch = busiSupportCacheService.getCommSysParaValue(CommSysParaCode.EMAIL_SWITCH);
         if (!"1".equals(emailSwitch)) {
             return;
         }

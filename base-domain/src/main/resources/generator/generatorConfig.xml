@@ -5,9 +5,19 @@
 
 <generatorConfiguration>
     <!--mysql 连接数据库jar-->
-    <classPathEntry location="D:\Program Files\MySQL\Connector J 5.1.31\mysql-connector-java-5.1.31-bin.jar" />
     <context id="testTables" targetRuntime="MyBatis3" defaultModelType="flat">
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.BatchInsertPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LogicalDeletePlugin">
+            <!-- 这里配置的是全局逻辑删除列和逻辑删除值，当然在table中配置的值会覆盖该全局配置 -->
+            <!-- 逻辑删除列类型只能为数字、字符串或者布尔类型 -->
+            <property name="logicalDeleteColumn" value="f_sys_del_state"/>
+            <!-- 逻辑删除-已删除值 -->
+            <property name="logicalDeleteValue" value="1"/>
+            <!-- 逻辑删除-未删除值 -->
+            <property name="logicalUnDeleteValue" value="0"/>
+        </plugin>
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="false" />
@@ -16,7 +26,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/sellprojectlog"
+                        connectionURL="jdbc:mysql://localhost:3306/sellproject"
                         userId="root"
                         password="abc123#">
         </jdbcConnection>
@@ -27,7 +37,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="org.prcode.business.basedomain.oosLogger.domain"
+        <javaModelGenerator targetPackage="org.prcode.business.basedomain.userRole.domain"
                             targetProject="src/main/java" >
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
@@ -45,7 +55,7 @@
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.prcode.business.basedomain.oosLogger.dao" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.prcode.business.basedomain.userRole.dao" targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
@@ -53,9 +63,9 @@
         <!-- 指定数据库表, 可以多个，则多个table标签 -->
         <!--如果xml中没有@mbg.generated，重新生成就会在后面追加着写-->
         <!--alias只是在sql的查询中字段加前缀-->
-        <table schema="" tableName="t_oos_logger"
-               domainObjectName="OosLogger"
-               alias="oosLogger"
+        <table schema="" tableName="t_user_role"
+               domainObjectName="UserRole"
+               alias="userRole"
                enableDeleteByExample="false"
                enableDeleteByPrimaryKey="false">
             <property name="useActualColumnNames" value="false"/>

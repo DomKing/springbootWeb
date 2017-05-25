@@ -80,4 +80,9 @@ public class SecurityUtil {
         return request.getSession(create);
     }
 
+    public static HttpServletRequest getRequest() {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        return attributes.getRequest();
+    }
+
 }

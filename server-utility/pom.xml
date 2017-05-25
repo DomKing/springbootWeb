@@ -12,6 +12,7 @@
     <modules>
         <module>server-utility-basic</module>
         <module>server-utility-msg</module>
+        <module>server-utility-pay</module>
         <module>mybatis-generator-core</module>
     </modules>
 
@@ -51,7 +52,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <executions>
@@ -62,7 +63,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 

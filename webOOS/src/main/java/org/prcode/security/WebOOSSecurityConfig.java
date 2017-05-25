@@ -1,5 +1,7 @@
 package org.prcode.security;
 
+import javax.annotation.Resource;
+
 import org.prcode.business.support.basic.SystemConstant;
 import org.prcode.business.support.basic.security.config.CsrfSecurityRequestMatcher;
 import org.prcode.business.support.basic.security.config.CustomerAccessDecisionManager;
@@ -15,24 +17,20 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.annotation.Resource;
-
 /**
- * @ClassName: WebSecurityConfig
+ * @ClassName: WebOOSSecurityConfig
  * @Date: 2017-4-16 14:23
  * @Auther: kangduo
  * @Description: (安全控制配置)
  */
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebOOSSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     private CustomerUserDetailService customerUserDetailService;
     @Resource
     private LoginSuccessHandler loginSuccessHandler;
-    @Resource
-    private CsrfSecurityRequestMatcher csrfSecurityRequestMatcher;
     @Resource
     private ISecurityService securityService;
     @Resource
@@ -45,13 +43,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public CsrfSecurityRequestMatcher csrfSecurityRequestMatcher() {
+        return new CsrfSecurityRequestMatcher(securityService, SystemConstant.OOS_SYSTEM);
+    }
+
+    @Bean
     public CustomerAccessDecisionManager customerAccessDecisionManager() {
         return new CustomerAccessDecisionManager(securityService);
     }
+
     @Bean
     public CustomerSecurityMetadataSource customerSecurityMetadataSource() {
         return new CustomerSecurityMetadataSource(securityService, SystemConstant.OOS_SYSTEM);
     }
+
     @Bean
     public CustomerFilterSecurityInterceptor customerFilterSecurityInterceptor() {
         CustomerFilterSecurityInterceptor customFilter = new CustomerFilterSecurityInterceptor();
@@ -60,6 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         customFilter.setAuthenticationManager(authenticationManager);
         return customFilter;
     }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -71,11 +77,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/login").failureUrl("/login?error").successForwardUrl("/").permitAll()
                 .successHandler(loginSuccessHandler)
-                .and().authorizeRequests().antMatchers("/css/**","/images/**", "/js/**").permitAll()
+                .and().authorizeRequests().antMatchers("/css/**","/images/**", "/js/**", "/html/**").permitAll()
+                .and().authorizeRequests().antMatchers("/logoutSuccess", "/deny").permitAll()
                 .anyRequest().authenticated()
-                .and().logout().logoutSuccessUrl("/login")
+                .and().logout().logoutSuccessUrl("/logoutSuccess")
                 .and().exceptionHandling().accessDeniedPage("/deny")
-                .and().csrf().requireCsrfProtectionMatcher(csrfSecurityRequestMatcher);
+                .and().csrf().requireCsrfProtectionMatcher(csrfSecurityRequestMatcher())
+                .and().headers().frameOptions().sameOrigin();
     }
 
 }

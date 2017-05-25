@@ -15,7 +15,9 @@ import java.util.List;
  */
 @Repository
 public interface SecurityDao {
-    CustomerUserDetail getUserDetailByName(@Param("username") String username, @Param("accountType") Byte accountType);
+    CustomerUserDetail getUserDetailByName(@Param("username") String username,
+                                           @Param("accountType") Byte accountType,
+                                           @Param("systemCode") String systemCode);
 
     List<CustomerUrlRoles> getUrlRoles(String systemCode);
 }

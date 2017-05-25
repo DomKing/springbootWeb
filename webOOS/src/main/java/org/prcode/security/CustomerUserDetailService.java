@@ -1,5 +1,8 @@
 package org.prcode.security;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.prcode.business.support.basic.security.domain.CustomerUserDetail;
 import org.prcode.business.support.basic.security.service.ISecurityService;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
@@ -9,9 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @ClassName: CustomerUserDetailService

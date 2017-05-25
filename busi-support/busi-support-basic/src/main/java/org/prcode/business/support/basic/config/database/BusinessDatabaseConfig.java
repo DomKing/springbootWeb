@@ -2,6 +2,12 @@ package org.prcode.business.support.basic.config.database;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;
+
+import java.sql.SQLException;
+import java.util.Properties;
+
+import javax.annotation.Resource;
+
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -14,11 +20,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-import java.sql.SQLException;
-import java.util.Properties;
-
 /**
- * @ClassName: BusinessDatabaseConfig
+ * @ClassName: BusinessDatabaseConfig.
  * @Date: 2017-03-29 16:12
  * @Auther: kangduo
  * @Description: (数据库连接配置, 主业务数据库)
@@ -27,9 +30,9 @@ import java.util.Properties;
 @MapperScan(value = "org.prcode.business.**.dao", sqlSessionFactoryRef = "businessSqlSessionFactory")
 public class BusinessDatabaseConfig {
 
-    private final String MAPPERXML_LOCATION = "classpath*:mybatis/business/mapper/*.xml";
+    private static final String MAPPERXML_LOCATION = "classpath*:mybatis/business/mapper/*.xml";
 
-    @Autowired
+    @Resource
     private DbConfigProperties dbConfigProperties;
 
     @Bean(initMethod = "init", destroyMethod = "close")
@@ -62,13 +65,13 @@ public class BusinessDatabaseConfig {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(businessDataSource);
         //mybatis分页
-        PageHelper pageHelper = new PageHelper();
         Properties props = new Properties();
         props.setProperty("dialect", "mysql");
         props.setProperty("reasonable", "true");
         props.setProperty("supportMethodsArguments", "true");
         props.setProperty("returnPageInfo", "check");
         props.setProperty("params", "count=countSql");
+        PageHelper pageHelper = new PageHelper();
         pageHelper.setProperties(props);
         //添加插件
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});

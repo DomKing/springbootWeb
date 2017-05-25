@@ -19,7 +19,10 @@ public class CustomerUserDetail implements UserDetails{
 
     private static final long serialVersionUID = -7669892055159148557L;
     private String id;
+    //微信unionId
+    private String unionId;
     private String username;
+    private String nickName;
     private String password;
     private Byte accountType;
     private List<Role> roles;
@@ -30,6 +33,14 @@ public class CustomerUserDetail implements UserDetails{
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUnionId() {
+        return unionId;
+    }
+
+    public void setUnionId(String unionId) {
+        this.unionId = unionId;
     }
 
     public void setUsername(String username) {
@@ -54,6 +65,14 @@ public class CustomerUserDetail implements UserDetails{
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     @Override

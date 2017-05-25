@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.prcode.business.core.security.role.dao.RoleDao">
+
+    <resultMap id="roleEntityMap" type="org.prcode.business.core.security.role.entity.RoleEntity">
+        <id column="roleId" property="id" javaType="java.lang.String"/>
+        <result column="roleName" property="roleName" javaType="java.lang.String"/>
+        <result column="roleDesc" property="roleDesc" javaType="java.lang.String"/>
+        <result column="roleState" property="roleState" javaType="java.lang.Byte"/>
+        <collection property="privileges" ofType="org.prcode.business.core.security.role.entity.rolePrivilege"
+                    select="getRolePrivilege" column="{roleId = roleId, systemCode = systemCode}"/>
+    </resultMap>
+    <resultMap id="rolePrivilegeMap" type="org.prcode.business.core.security.role.entity.rolePrivilege">
+        <id column="resourceId" property="resourceUrlId" javaType="java.lang.String"/>
+        <result column="urlDesc" property="urlDesc" javaType="java.lang.String"/>
+        <result column="parentId" property="parentId" javaType="java.lang.String"/>
+        <result column="level" property="level" javaType="java.lang.Byte"/>
+        <result column="hasPrivilege" property="hasPrivilege" javaType="java.lang.Boolean"/>
+    </resultMap>
+    <select id="getRoleEntity" resultMap="roleEntityMap">
+        select r.f_id roleId, r.f_role_name roleName, r.f_role_desc roleDesc, r.f_role_state roleState,#{systemCode} systemCode
+        from t_role r
+        where r.f_id = #{roleId} and r.f_system_code = #{systemCode}
+    </select>
+    <select id="getRolePrivilege" resultMap="rolePrivilegeMap" parameterType="map">
+        select ru.f_id resourceId, ru.f_url_desc urlDesc, ru.f_parent_id parentId,
+            ru.f_level `level`, if(rr.f_id is null, 0, 1) hasPrivilege
+        from t_resource_url ru
+        left join t_role_resource rr on rr.f_sys_del_state = 0
+            and rr.f_role_id = #{roleId} and rr.f_resource_url_id = ru.f_id
+        where ru.f_sys_del_state = 0 and ru.f_system_code = #{systemCode}
+        order by ru.f_order desc
+    </select>
+
+</mapper>

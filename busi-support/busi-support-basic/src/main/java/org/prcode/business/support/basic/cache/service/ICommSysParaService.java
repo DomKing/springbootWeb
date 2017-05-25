@@ -1,4 +1,4 @@
-package org.prcode.business.support.basic.busiSupportCache.service;
+package org.prcode.business.support.basic.cache.service;
 
 /**
  * @ClassName: IBusiSupportCacheService
@@ -6,7 +6,7 @@ package org.prcode.business.support.basic.busiSupportCache.service;
  * @Auther: kangduo
  * @Description: (param缓存)
  */
-public interface IBusiSupportCacheService {
+public interface ICommSysParaService {
     String getCommSysParaValue(String paraCode);
 
     String updCommSysParaValue(String paraCode, String paraValue);

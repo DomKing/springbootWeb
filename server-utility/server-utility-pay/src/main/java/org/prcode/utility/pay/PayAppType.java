@@ -8,16 +8,27 @@ package org.prcode.utility.pay;
  */
 public class PayAppType {
 
-    public static class WechatTeaLittleApp {
-        //应用ID
+    public static class MiniProgramApp {
         public static String APP_ID = "";
-        //应用凭证
         public static String APP_SECRET = "";
-        // 应用密钥
         public static String APP_KEY = "";
-        //财付通商户号
-        public static String PARTNER = "";
-        //商户号对应密钥
-        public static String PARTNER_KEY = "";
+        public static String MCH_ID = "";
+        public static String MCH_KEY = "";
+    }
+
+    public static class LightApp {
+        public static String APP_ID = "";
+        public static String APP_SECRET = "";
+        public static String APP_KEY = "";
+        public static String MCH_ID = "";
+        public static String MCH_KEY = "";
+    }
+
+    public static class App {
+        public static String APP_ID = "";
+        public static String APP_SECRET = "";
+        public static String APP_KEY = "";
+        public static String MCH_ID = "";
+        public static String MCH_KEY = "";
     }
 }

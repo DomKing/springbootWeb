@@ -11,5 +11,5 @@ public class SystemConstant {
     public static final String OOS_SYSTEM = "OOS";
 
     //小程序
-    public static final String LITTLE_PROGRAME = "LP";
+    public static final String MINI_PROGRAM = "LP";
 }

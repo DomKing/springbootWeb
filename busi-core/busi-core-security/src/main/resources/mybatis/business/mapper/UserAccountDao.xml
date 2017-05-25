@@ -2,5 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.prcode.business.core.security.account.dao.UserAccountDao">
 
+    <resultMap id="userAccountMap" type="org.prcode.business.core.security.account.entity.UserAccount">
+        <id property="userId" column="uId" javaType="java.lang.String"/>
+        <result property="username" column="username" javaType="java.lang.String"/>
+        <result property="mobile" column="mobile" javaType="java.lang.String"/>
+        <result property="userAccount" column="userAccount" javaType="java.lang.String"/>
+        <result property="userState" column="userState" javaType="java.lang.Byte"/>
+        <collection property="roleList" ofType="org.prcode.business.core.security.account.entity.UserHasRole"
+                    select="getUserRoles" column="{uId = uId, systemCode = systemCode}"/>
+    </resultMap>
+    <resultMap id="userRoleMap" type="org.prcode.business.core.security.account.entity.UserHasRole">
+        <id column="roleId" property="roleId" javaType="java.lang.String"/>
+        <result column="roleName" property="roleName" javaType="java.lang.String"/>
+        <result column="roleDesc" property="roleDesc" javaType="java.lang.String"/>
+        <result column="hasRole" property="hasRole" javaType="java.lang.Boolean"/>
+    </resultMap>
 
+    <select id="getUserAccountList" parameterType="map" resultMap="userAccountMap">
+        select u.f_id uId, u.f_user_name username, f_real_name realName, u.f_mobile mobile,
+          ln.f_user_account userAccount, u.f_state userState, #{systemCode} systemCode
+        from t_user u
+        inner join t_login_no ln on ln.f_sys_del_state = 0 and ln.f_user_id = u.f_id
+        where u.f_sys_del_state = 0 AND ln.f_type = #{accountType}
+        <if test="account.userAccount != null and account.userAccount != ''">
+            AND ln.f_user_account = #{account.userAccount}
+        </if>
+        <if test="account.realName != null and account.realName != ''">
+            AND u.f_state = #{account.realName}
+        </if>
+        <if test="account.userState != null and account.userState != ''">
+            AND u.f_state = #{account.userState}
+        </if>
+        order by u.f_sys_add_time desc
+    </select>
+    <select id="getUserRoles" resultMap="userRoleMap" parameterType="map">
+        select r.f_id roleId, r.f_role_name roleName, r.f_role_desc roleDesc, if(ur.f_id is null, 0, 1) hasRole
+        from t_role r
+        left join t_user_role ur on ur.f_sys_del_state = 0 and ur.f_role_id = r.f_id and ur.f_user_id = #{uId}
+        where r.f_sys_del_state  = 0 and r.f_role_state = 1 AND r.f_system_code = #{systemCode}
+        order by r.f_sys_add_time
+    </select>
+
+    <select id="getUserAccount" parameterType="map" resultMap="userAccountMap">
+        select u.f_id uId, u.f_user_name username, f_real_name realName, u.f_mobile mobile,
+        ln.f_user_account userAccount, u.f_state userState, #{systemCode} systemCode
+        from t_user u
+        inner join t_login_no ln on ln.f_sys_del_state = 0 and ln.f_user_id = u.f_id
+        where u.f_sys_del_state = 0 and u.f_id = #{userId} AND ln.f_type = #{accountType}
+    </select>
 </mapper>

@@ -1,6 +1,13 @@
-package org.prcode.business.support.basic.busiSupportCache.service;
+package org.prcode.business.support.basic.cache.service;
 
 import com.github.pagehelper.PageHelper;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
 import org.prcode.business.basedomain.commSysPara.dao.CommSysParaMapper;
 import org.prcode.business.basedomain.commSysPara.domain.CommSysPara;
 import org.prcode.business.basedomain.commSysPara.domain.CommSysParaExample;
@@ -9,19 +16,16 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
-
 /**
- * @ClassName: BusiSupportCacheService
+ * @ClassName: CommSysParaService
  * @Date: 2017-04-01 14:53
  * @Auther: kangduo
  * @Description: (param缓存实现类)
  */
 @Service
-public class BusiSupportCacheService implements IBusiSupportCacheService {
+public class CommSysParaService implements ICommSysParaService {
 
+    private static final Logger logger = Logger.getLogger(CommSysParaService.class);
     @Resource
     private CommSysParaMapper commSysParaMapper;
 
@@ -32,7 +36,7 @@ public class BusiSupportCacheService implements IBusiSupportCacheService {
      * @param paraCode code
      * @return 对应的值
      */
-    @Cacheable(value = "mysql:busiSupportCacheService:commSysPara", key = "#paraCode", sync = true)
+    @Cacheable(value = "mysql:commSysParaMapper:commSysPara", key = "#paraCode", sync = true)
     public String getCommSysParaValue(String paraCode) {
         CommSysParaExample example = new CommSysParaExample();
         example.createCriteria().andSysParaCodeEqualTo(paraCode).andSysDelStateEqualTo(false);
@@ -52,7 +56,7 @@ public class BusiSupportCacheService implements IBusiSupportCacheService {
      * @param paraValue value
      * @return 更新后的值
      */
-    @CachePut(value = "mysql:busiSupportCacheService:commSysPara", key = "#paraCode")
+    @CachePut(value = "mysql:commSysParaMapper:commSysPara", key = "#paraCode")
     public String updCommSysParaValue(String paraCode, String paraValue) {
         CommSysPara para = new CommSysPara();
         para.setSysParaValue(paraValue);
@@ -68,7 +72,7 @@ public class BusiSupportCacheService implements IBusiSupportCacheService {
      *
      * @param paraCode code
      */
-    @CacheEvict(value = "mysql:busiSupportCacheService:commSysPara", key = "#paraCode")
+    @CacheEvict(value = "mysql:commSysParaMapper:commSysPara", key = "#paraCode")
     public void delCommSysParaValue(String paraCode) {
         CommSysPara para = new CommSysPara();
         para.setSysDelTime(new Date());
@@ -79,10 +83,10 @@ public class BusiSupportCacheService implements IBusiSupportCacheService {
     }
 
     /**
-     * 清空para表在redis的缓存
+     * 清空para表在redis的缓存,系统初始化的时候清空
      */
-    @CacheEvict(value = "mysql:busiSupportCacheService:commSysPara", allEntries = true)
+    @CacheEvict(value = "mysql:commSysParaMapper:commSysPara", allEntries = true)
     public void refreshSysParaCache() {
-
+        logger.debug("==========清空redis中的参数缓存===========");
     }
 }
