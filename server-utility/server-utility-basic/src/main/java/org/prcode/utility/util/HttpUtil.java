@@ -13,10 +13,10 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 /**
- * @ClassName: HttpUtil
- * @Date: 2017-3-24 22:41
- * @Auther: kangduo
- * @Description: ()
+ * @className: HttpUtil
+ * @date: 2017-3-24 22:41
+ * @author: kangduo
+ * @description: ()
  */
 public class HttpUtil {
 

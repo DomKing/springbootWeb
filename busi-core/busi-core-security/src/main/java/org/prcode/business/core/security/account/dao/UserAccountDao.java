@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @ClassName: UserAccountDao
- * @Date: 2017-4-19 22:08
- * @Auther: kangduo
- * @Description: ()
+ * @className: UserAccountDao
+ * @date: 2017-4-19 22:08
+ * @author: kangduo
+ * @description: ()
  */
 @Repository
 public interface UserAccountDao {

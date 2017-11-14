@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @ClassName: DruidConfig
- * @Date: 2017-03-29 17:26
- * @Auther: kangduo
- * @Description: (Druid监控页面配置)
+ * @className: DruidConfig
+ * @date: 2017-03-29 17:26
+ * @author: kangduo
+ * @description: (Druid监控页面配置)
  */
 @Configuration
 public class DruidConfig {
@@ -29,8 +29,9 @@ public class DruidConfig {
         ServletRegistrationBean reg = new ServletRegistrationBean();
         reg.setServlet(new StatViewServlet());
         reg.addUrlMappings("/druid/*");
-        reg.addInitParameter("allow", "127.0.0.1");//允许访问地址，不填则全允许，填了只允许
-//        reg.addInitParameter("deny", "127.0.0.1");
+
+        //允许访问地址，不填则全允许，填了只允许
+        reg.addInitParameter("allow", "127.0.0.1");
         reg.addInitParameter("loginUsername", dbConfigProperties.getDruidVisitName());
         reg.addInitParameter("loginPassword", dbConfigProperties.getDruidVisitPwd());
         return reg;

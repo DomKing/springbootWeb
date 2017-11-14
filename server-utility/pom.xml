@@ -12,7 +12,6 @@
     <modules>
         <module>server-utility-basic</module>
         <module>server-utility-msg</module>
-        <module>server-utility-pay</module>
         <module>mybatis-generator-core</module>
     </modules>
 

@@ -3,10 +3,10 @@ package org.prcode.utility.basic;
 import java.nio.charset.Charset;
 
 /**
- * @ClassName: CharsetConstant
- * @Date: 2017-03-24 17:01
- * @Auther: kangduo
- * @Description: (编码集合类)
+ * @className: CharsetConstant
+ * @date: 2017-03-24 17:01
+ * @author: kangduo
+ * @description: (编码集合类)
  */
 public class CharsetConstant {
     public static final Charset UTF_8 = Charset.forName("utf-8");

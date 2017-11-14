@@ -2,7 +2,7 @@ package org.prcode.business.support.basic.security.config;
 
 import org.prcode.business.basedomain.role.domain.Role;
 import org.prcode.business.support.basic.security.domain.CustomerUserDetail;
-import org.prcode.business.support.basic.security.service.ISecurityService;
+import org.prcode.business.support.basic.security.service.SecurityService;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
@@ -13,16 +13,16 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @ClassName: CustomerAccessDecisionManager
- * @Date: 2017-4-16 20:17
- * @Auther: kangduo
- * @Description: (权限管理决断器)
+ * @className: CustomerAccessDecisionManager
+ * @date: 2017-4-16 20:17
+ * @author: kangduo
+ * @description: (权限管理决断器)
  */
 public class CustomerAccessDecisionManager implements AccessDecisionManager {
 
-    private ISecurityService securityService;
+    private SecurityService securityService;
 
-    public CustomerAccessDecisionManager(ISecurityService securityService) {
+    public CustomerAccessDecisionManager(SecurityService securityService) {
         super();
         this.securityService = securityService;
     }

@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @ClassName: Query
- * @Date: 2017-03-24 13:23
- * @Auther: kangduo
- * @Description: (使用此注解,根据结果判断是否有符合条件的记录)
+ * @className: Query
+ * @date: 2017-03-24 13:23
+ * @author: kangduo
+ * @description: (使用此注解,根据结果判断是否有符合条件的记录)
  */
 
 @Target(ElementType.METHOD)

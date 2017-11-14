@@ -1,10 +1,10 @@
 package org.prcode.utility.exception;
 
 /**
- * @ClassName: LoginTimeout
- * @Date: 2017-04-14 17:58
- * @Auther: kangduo
- * @Description: (登录超时异常)
+ * @className: LoginTimeout
+ * @date: 2017-04-14 17:58
+ * @author: kangduo
+ * @description: (登录超时异常)
  */
 public class LoginTimeout extends Exception {
 

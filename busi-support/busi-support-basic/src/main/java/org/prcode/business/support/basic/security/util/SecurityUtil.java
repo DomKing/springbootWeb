@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * @ClassName: SecurityUtil
- * @Date: 2017-4-16 22:32
- * @Auther: kangduo
- * @Description: (项目中任意位置获取用户信息)
+ * @className: SecurityUtil
+ * @date: 2017-4-16 22:32
+ * @author: kangduo
+ * @description: (项目中任意位置获取用户信息)
  */
 public class SecurityUtil {
 

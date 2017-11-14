@@ -1,26 +1,16 @@
 package org.prcode.business.core.security.resourceUrl.service;
 
-import org.prcode.business.core.security.resourceUrl.dao.ResourceUrlDao;
 import org.prcode.business.core.security.resourceUrl.entity.Menu;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @ClassName: ResourceUrlService
- * @Date: 2017-4-19 21:22
- * @Auther: kangduo
- * @Description: (resourceUrlService)
+ * @className: IResourceUrlService
+ * @date: 2017-4-19 21:19
+ * @author: kangduo
+ * @description: (菜单权限service)
  */
-@Service
-public class ResourceUrlService implements IResourceUrlService{
-    @Resource
-    private ResourceUrlDao resourceUrlDao;
+public interface ResourceUrlService {
 
-    @Override
-    public List<Menu> getMenuListByUser(String userId, String systemCode) {
-        return resourceUrlDao.getMenuListByUser(userId, systemCode);
-    }
-
+    List<Menu> getMenuListByUser(String userId, String systemCode);
 }

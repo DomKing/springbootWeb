@@ -1,10 +1,10 @@
 package org.prcode.utility.basic.support;
 
 /**
- * @ClassName: ResponseStatus
- * @Date: 2017-03-30 16:41
- * @Auther: kangduo
- * @Description: (响应状态代码)
+ * @className: ResponseStatus
+ * @date: 2017-03-30 16:41
+ * @author: kangduo
+ * @description: (响应状态代码)
  */
 public class ResponseStatus {
     /**

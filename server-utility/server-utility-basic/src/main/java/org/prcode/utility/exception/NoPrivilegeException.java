@@ -1,10 +1,10 @@
 package org.prcode.utility.exception;
 
 /**
- * @ClassName: NoPrivilegeException
- * @Date: 2017-04-14 17:57
- * @Auther: kangduo
- * @Description: (无权限异常)
+ * @className: NoPrivilegeException
+ * @date: 2017-04-14 17:57
+ * @author: kangduo
+ * @description: (无权限异常)
  */
 public class NoPrivilegeException extends Exception{
 

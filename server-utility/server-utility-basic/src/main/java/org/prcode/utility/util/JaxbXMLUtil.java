@@ -10,10 +10,10 @@ import java.io.StringReader;
 import java.io.StringWriter;
 
 /**
- * @ClassName: JaxbXMLUtil
- * @Date: 2017-03-24 16:59
- * @Auther: kangduo
- * @Description: (xml与javaBean转换工具)
+ * @className: JaxbXMLUtil
+ * @date: 2017-03-24 16:59
+ * @author: kangduo
+ * @description: (xml与javaBean转换工具)
  */
 public class JaxbXMLUtil {
 

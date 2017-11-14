@@ -7,7 +7,7 @@ import org.prcode.business.support.basic.security.config.CsrfSecurityRequestMatc
 import org.prcode.business.support.basic.security.config.CustomerAccessDecisionManager;
 import org.prcode.business.support.basic.security.config.CustomerFilterSecurityInterceptor;
 import org.prcode.business.support.basic.security.config.CustomerSecurityMetadataSource;
-import org.prcode.business.support.basic.security.service.ISecurityService;
+import org.prcode.business.support.basic.security.service.SecurityService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,10 +18,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * @ClassName: WebOOSSecurityConfig
- * @Date: 2017-4-16 14:23
- * @Auther: kangduo
- * @Description: (安全控制配置)
+ * @className: WebOOSSecurityConfig
+ * @date: 2017-4-16 14:23
+ * @author: kangduo
+ * @description: (安全控制配置)
  */
 @Configuration
 @EnableWebSecurity
@@ -32,15 +32,11 @@ public class WebOOSSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     private LoginSuccessHandler loginSuccessHandler;
     @Resource
-    private ISecurityService securityService;
+    private SecurityService securityService;
     @Resource
     private AuthenticationManager authenticationManager;
-
-
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Resource
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Bean
     public CsrfSecurityRequestMatcher csrfSecurityRequestMatcher() {
@@ -69,7 +65,7 @@ public class WebOOSSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customerUserDetailService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(customerUserDetailService).passwordEncoder(passwordEncoder);
         auth.eraseCredentials(false);
     }
 

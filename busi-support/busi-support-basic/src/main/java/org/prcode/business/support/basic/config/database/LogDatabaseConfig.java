@@ -14,10 +14,10 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import java.sql.SQLException;
 
 /**
- * @ClassName: LogDatabaseConfig
- * @Date: 2017-03-30 14:02
- * @Auther: kangduo
- * @Description: (数据库连接配置, 日志数据库)
+ * @className: LogDatabaseConfig
+ * @date: 2017-03-30 14:02
+ * @author: kangduo
+ * @description: (数据库连接配置, 日志数据库)
  */
 @Configuration
 @MapperScan(value = "org.prcode.log.basedomain.*.dao", sqlSessionFactoryRef = "logSqlSessionFactory")

@@ -6,10 +6,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
- * @ClassName: PriceUtil
- * @Date: 2017-03-24 15:25
- * @Auther: kangduo
- * @Description: (价格计算工具类)
+ * @className: PriceUtil
+ * @date: 2017-03-24 15:25
+ * @author: kangduo
+ * @description: (价格计算工具类)
  */
 public class PriceUtil {
 

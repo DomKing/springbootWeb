@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @ClassName: MapConverter
- * @Date: 2017-03-24 16:47
- * @Auther: kangduo
- * @Description: (map转化类)
+ * @className: MapConverter
+ * @date: 2017-03-24 16:47
+ * @author: kangduo
+ * @description: (map转化类)
  */
 public class MapConverter {
 

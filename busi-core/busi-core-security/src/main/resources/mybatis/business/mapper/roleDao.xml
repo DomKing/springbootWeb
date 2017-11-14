@@ -7,10 +7,10 @@
         <result column="roleName" property="roleName" javaType="java.lang.String"/>
         <result column="roleDesc" property="roleDesc" javaType="java.lang.String"/>
         <result column="roleState" property="roleState" javaType="java.lang.Byte"/>
-        <collection property="privileges" ofType="org.prcode.business.core.security.role.entity.rolePrivilege"
+        <collection property="privileges" ofType="org.prcode.business.core.security.role.entity.RolePrivilege"
                     select="getRolePrivilege" column="{roleId = roleId, systemCode = systemCode}"/>
     </resultMap>
-    <resultMap id="rolePrivilegeMap" type="org.prcode.business.core.security.role.entity.rolePrivilege">
+    <resultMap id="rolePrivilegeMap" type="org.prcode.business.core.security.role.entity.RolePrivilege">
         <id column="resourceId" property="resourceUrlId" javaType="java.lang.String"/>
         <result column="urlDesc" property="urlDesc" javaType="java.lang.String"/>
         <result column="parentId" property="parentId" javaType="java.lang.String"/>

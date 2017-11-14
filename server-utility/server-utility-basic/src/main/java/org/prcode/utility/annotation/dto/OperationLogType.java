@@ -1,10 +1,10 @@
 package org.prcode.utility.annotation.dto;
 
 /**
- * @ClassName: OperationLogType
- * @Date: 2017-03-24 13:15
- * @Auther: kangduo
- * @Description: (操作类型判断)
+ * @className: OperationLogType
+ * @date: 2017-03-24 13:15
+ * @author: kangduo
+ * @description: (操作类型判断)
  */
 public enum OperationLogType {
     /**

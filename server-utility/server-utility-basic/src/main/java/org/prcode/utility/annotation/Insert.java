@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @ClassName: Create
- * @Date: 2017-03-24 13:20
- * @Auther: kangduo
- * @Description: (使用此注解,根据返回值验证是否添加成功)
+ * @className: Create
+ * @date: 2017-03-24 13:20
+ * @author: kangduo
+ * @description: (使用此注解,根据返回值验证是否添加成功)
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

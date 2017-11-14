@@ -3,12 +3,12 @@ package org.prcode.business.core.security.role.entity;
 import java.io.Serializable;
 
 /**
- * @ClassName: rolePrivilege
- * @Date: 2017-4-22 15:52
- * @Auther: kangduo
- * @Description: ()
+ * @className: rolePrivilege
+ * @date: 2017-4-22 15:52
+ * @author: kangduo
+ * @description: ()
  */
-public class rolePrivilege implements Serializable{
+public class RolePrivilege implements Serializable{
     private static final long serialVersionUID = 5888472304440886625L;
 
     private String resourceUrlId;
@@ -59,10 +59,14 @@ public class rolePrivilege implements Serializable{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
-        rolePrivilege that = (rolePrivilege) o;
+        RolePrivilege that = (RolePrivilege) o;
 
         return resourceUrlId != null ? resourceUrlId.equals(that.resourceUrlId) : that.resourceUrlId == null;
     }

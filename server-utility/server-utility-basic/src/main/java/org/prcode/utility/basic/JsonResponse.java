@@ -6,10 +6,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @ClassName: JsonResponse
- * @Date: 2017-03-30 16:39
- * @Auther: kangduo
- * @Description: (返回结果)
+ * @className: JsonResponse
+ * @date: 2017-03-30 16:39
+ * @author: kangduo
+ * @description: (返回结果)
  */
 public class JsonResponse {
     // 状态

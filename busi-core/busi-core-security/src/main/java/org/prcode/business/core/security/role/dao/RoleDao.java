@@ -5,10 +5,10 @@ import org.prcode.business.core.security.role.entity.RoleEntity;
 import org.springframework.stereotype.Repository;
 
 /**
- * @ClassName: RoleDao
- * @Date: 2017-4-22 15:01
- * @Auther: kangduo
- * @Description: ()
+ * @className: RoleDao
+ * @date: 2017-4-22 15:01
+ * @author: kangduo
+ * @description: ()
  */
 @Repository
 public interface RoleDao {

@@ -20,10 +20,10 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import org.springframework.stereotype.Component;
 
 /**
- * @ClassName: LoginSuccessHandler
- * @Date: 2017-4-16 18:10
- * @Auther: kangduo
- * @Description: (登录成功处理器)
+ * @className: LoginSuccessHandler
+ * @date: 2017-4-16 18:10
+ * @author: kangduo
+ * @description: (登录成功处理器)
  */
 @Component
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {

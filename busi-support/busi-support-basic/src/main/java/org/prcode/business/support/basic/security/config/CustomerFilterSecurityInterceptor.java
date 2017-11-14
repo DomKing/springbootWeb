@@ -9,10 +9,10 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * @ClassName: CustomerFilterSecurityInterceptor
- * @Date: 2017-4-16 20:15
- * @Auther: kangduo
- * @Description: (权限管理过滤器)
+ * @className: CustomerFilterSecurityInterceptor
+ * @date: 2017-4-16 20:15
+ * @author: kangduo
+ * @description: (权限管理过滤器)
  */
 public class CustomerFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
 

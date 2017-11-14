@@ -4,10 +4,10 @@ import org.prcode.utility.exception.ValidateException;
 import org.springframework.validation.BindingResult;
 
 /**
- * @ClassName: BindingResultUtil
- * @Date: 2017-03-30 19:34
- * @Auther: kangduo
- * @Description: (校验工具类)
+ * @className: BindingResultUtil
+ * @date: 2017-03-30 19:34
+ * @author: kangduo
+ * @description: (校验工具类)
  */
 public class BindingResultUtil {
 

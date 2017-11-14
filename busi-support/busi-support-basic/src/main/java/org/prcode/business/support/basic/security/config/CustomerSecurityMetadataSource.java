@@ -3,7 +3,7 @@ package org.prcode.business.support.basic.security.config;
 import org.apache.log4j.Logger;
 import org.prcode.business.basedomain.role.domain.Role;
 import org.prcode.business.support.basic.security.domain.CustomerUrlRoles;
-import org.prcode.business.support.basic.security.service.ISecurityService;
+import org.prcode.business.support.basic.security.service.SecurityService;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
@@ -14,10 +14,10 @@ import org.springframework.util.PathMatcher;
 import java.util.*;
 
 /**
- * @ClassName: CustomSecurityMetadataSource
- * @Date: 2017-4-16 20:20
- * @Auther: kangduo
- * @Description: (权限配置资源管理器)
+ * @className: CustomSecurityMetadataSource
+ * @date: 2017-4-16 20:20
+ * @author: kangduo
+ * @description: (权限配置资源管理器)
  */
 public class CustomerSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
     private static final Logger logger = Logger.getLogger(CustomerSecurityMetadataSource.class);
@@ -25,10 +25,10 @@ public class CustomerSecurityMetadataSource implements FilterInvocationSecurityM
     private Map<String, Collection<ConfigAttribute>> resourceMap = null;
     private PathMatcher pathMatcher = new AntPathMatcher();
 
-    private ISecurityService securityService;
+    private SecurityService securityService;
     private String systemCode;
 
-    public CustomerSecurityMetadataSource(ISecurityService securityService, String systemCode) {
+    public CustomerSecurityMetadataSource(SecurityService securityService, String systemCode) {
         super();
         this.securityService = securityService;
         this.systemCode = systemCode;

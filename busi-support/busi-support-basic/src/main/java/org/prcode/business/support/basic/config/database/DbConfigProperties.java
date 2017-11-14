@@ -7,10 +7,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
- * @ClassName: DbConfigProperties
- * @Date: 2017-03-29 16:48
- * @Auther: kangduo
- * @Description: (读取dbconfig.properties内容)
+ * @className: DbConfigProperties
+ * @date: 2017-03-29 16:48
+ * @author: kangduo
+ * @description: (读取dbconfig.properties内容)
  */
 @Component
 @ConfigurationProperties(prefix = "spring.datasource")

@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
- * @ClassName: SessionConfig
- * @Date: 2017-04-18 17:54
- * @Auther: kangduo
- * @Description: ()
+ * @className: SessionConfig
+ * @date: 2017-04-18 17:54
+ * @author: kangduo
+ * @description: ()
  */
 @Configuration
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600)

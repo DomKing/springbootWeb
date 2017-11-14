@@ -8,10 +8,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @ClassName: Action
- * @Date: 2017-03-24 13:18
- * @Auther: kangduo
- * @Description: (用户操作日志注解类)
+ * @className: Action
+ * @date: 2017-03-24 13:18
+ * @author: kangduo
+ * @description: (用户操作日志注解类)
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,14 +1,12 @@
 package org.prcode.business.support.basic.cache.constant;
 
 /**
- * @ClassName: CommSysParaCode
- * @Date: 2017-04-01 15:47
- * @Auther: kangduo
- * @Description: (缓存表code)
+ * @className: CommSysParaCode
+ * @date: 2017-04-01 15:47
+ * @author: kangduo
+ * @description: (缓存表code)
  */
 public class CommSysParaCode {
-
-    public static final String NEWEST_LP_SERVER_URL = "LPBaseUrl";
 
     public static final String EMAIL_SWITCH = "emailSwitch";
 

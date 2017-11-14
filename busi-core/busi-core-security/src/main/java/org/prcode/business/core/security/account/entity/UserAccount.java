@@ -12,20 +12,24 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @ClassName: UserAccount
- * @Date: 2017-4-19 22:05
- * @Auther: kangduo
- * @Description: ()
+ * @className: UserAccount
+ * @date: 2017-4-19 22:05
+ * @author: kangduo
+ * @description: ()
  */
 public class UserAccount implements Serializable {
     private static final long serialVersionUID = -6819122784304918758L;
 
     @NotBlank(message = "用户ID不可为空", groups = {Edit.class})
     private String userId;
-    //loginNo中的userAccount
+    /**
+     * loginNo中的userAccount
+     */
     private String username;
 
-    //t_user中的username
+    /**
+     * t_user中的username
+     */
     @ValidateRegexp(regexp = "^[a-zA-Z0-9]{5,20}$", message = "账号需为5到20的字母或数字", groups = Create.class)
     private String userAccount;
 

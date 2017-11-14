@@ -6,10 +6,10 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 /**
- * @ClassName: TrustManager
- * @Date: 2017-3-24 23:30
- * @Auther: kangduo
- * @Description: ()
+ * @className: TrustManager
+ * @date: 2017-3-24 23:30
+ * @author: kangduo
+ * @description: ()
  */
 public class DefaultX509TrustManager implements X509TrustManager {
     @Override

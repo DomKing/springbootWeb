@@ -22,10 +22,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @ClassName: ExcelUtil
- * @Date: 2017-04-24 15:47
- * @Auther: kangduo
- * @Description: (excel工具类)
+ * @className: ExcelUtil
+ * @date: 2017-04-24 15:47
+ * @author: kangduo
+ * @description: (excel工具类)
  */
 public class ExcelUtil<T> {
 
@@ -331,7 +331,7 @@ public class ExcelUtil<T> {
     /**
      * @param workbook
      * @return
-     * @Description: (设置excel的表格样式)
+     * @description: (设置excel的表格样式)
      */
     private HSSFCellStyle createCellStyle(HSSFWorkbook workbook) {
         HSSFCellStyle style = workbook.createCellStyle();

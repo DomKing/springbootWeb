@@ -10,10 +10,10 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @ClassName: ValidateRegexp
- * @Date: 2017-4-21 22:21
- * @Auther: kangduo
- * @Description: (jsr正则校验)
+ * @className: ValidateRegexp
+ * @date: 2017-4-21 22:21
+ * @author: kangduo
+ * @description: (jsr正则校验)
  */
 @Constraint(validatedBy = {ValidateRegexpValidator.class})
 @Documented

@@ -10,16 +10,19 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @ClassName: CustomerUserDetail
- * @Date: 2017-4-16 15:43
- * @Auther: kangduo
- * @Description: (自定义实现userDetails)
+ * @className: CustomerUserDetail
+ * @date: 2017-4-16 15:43
+ * @author: kangduo
+ * @description: (自定义实现userDetails)
  */
 public class CustomerUserDetail implements UserDetails{
 
     private static final long serialVersionUID = -7669892055159148557L;
     private String id;
-    //微信unionId
+
+    /**
+     * 微信unionId
+     */
     private String unionId;
     private String username;
     private String nickName;
@@ -90,6 +93,7 @@ public class CustomerUserDetail implements UserDetails{
         return this.password;
     }
 
+    @Override
     public String getUsername() {
         return this.username;
     }
@@ -99,6 +103,7 @@ public class CustomerUserDetail implements UserDetails{
         return true;
     }
 
+    @Override
     public boolean isAccountNonLocked() {
         return true;
     }

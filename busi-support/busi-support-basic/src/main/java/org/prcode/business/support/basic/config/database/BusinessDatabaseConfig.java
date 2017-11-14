@@ -21,10 +21,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
- * @ClassName: BusinessDatabaseConfig.
- * @Date: 2017-03-29 16:12
- * @Auther: kangduo
- * @Description: (数据库连接配置, 主业务数据库)
+ * @className: BusinessDatabaseConfig.
+ * @date: 2017-03-29 16:12
+ * @author: kangduo
+ * @description: (数据库连接配置, 主业务数据库)
  */
 @Configuration
 @MapperScan(value = "org.prcode.business.**.dao", sqlSessionFactoryRef = "businessSqlSessionFactory")
@@ -49,11 +49,15 @@ public class BusinessDatabaseConfig {
         druidDataSource.setMaxWait(dbConfigProperties.getMaxWait());
         druidDataSource.setTimeBetweenEvictionRunsMillis(dbConfigProperties.getTimeBetweenEvictionRunsMillis());
         druidDataSource.setMinEvictableIdleTimeMillis(dbConfigProperties.getMinEvictableIdleTimeMillis());
-        druidDataSource.setValidationQuery(dbConfigProperties.getValidationQuery());//此项如果为空，下面几个test都不会生效
+
+        //此项如果为空，下面几个test都不会生效
+        druidDataSource.setValidationQuery(dbConfigProperties.getValidationQuery());
         druidDataSource.setTestWhileIdle(dbConfigProperties.getTestWhileIdle());
         druidDataSource.setTestOnBorrow(dbConfigProperties.getTestOnBorrow());
         druidDataSource.setTestOnReturn(dbConfigProperties.getTestOnReturn());
-        druidDataSource.setPoolPreparedStatements(dbConfigProperties.getPoolPreparedStatements());//5.5以后的mysql开启，以后的关闭
+
+        //5.5以后的mysql开启，以后的关闭
+        druidDataSource.setPoolPreparedStatements(dbConfigProperties.getPoolPreparedStatements());
         druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(dbConfigProperties.getMaxPoolPreparedStatementPerConnectionSize());
         druidDataSource.setFilters(dbConfigProperties.getFilters());
         return druidDataSource;

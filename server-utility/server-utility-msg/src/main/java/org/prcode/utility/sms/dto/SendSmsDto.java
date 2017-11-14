@@ -3,10 +3,10 @@ package org.prcode.utility.sms.dto;
 import java.util.List;
 
 /**
- * @ClassName: SendSmsDto
- * @Date: 2017-03-24 17:37
- * @Auther: kangduo
- * @Description: (发送短信对象)
+ * @className: SendSmsDto
+ * @date: 2017-03-24 17:37
+ * @author: kangduo
+ * @description: (发送短信对象)
  */
 public class SendSmsDto {
 

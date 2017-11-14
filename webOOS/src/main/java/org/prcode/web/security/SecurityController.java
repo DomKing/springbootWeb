@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * @ClassName: SecurityController
- * @Date: 2017-4-16 16:17
- * @Auther: kangduo
- * @Description: (安全相关controller)
+ * @className: SecurityController
+ * @date: 2017-4-16 16:17
+ * @author: kangduo
+ * @description: (安全相关controller)
  */
 @Controller
 public class SecurityController {

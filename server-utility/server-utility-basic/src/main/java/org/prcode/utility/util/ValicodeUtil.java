@@ -4,10 +4,10 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 /**
- * @ClassName: ValicodeUtil
- * @Date: 2017-03-24 17:45
- * @Auther: kangduo
- * @Description: (生成验证码工具类)
+ * @className: ValicodeUtil
+ * @date: 2017-03-24 17:45
+ * @author: kangduo
+ * @description: (生成验证码工具类)
  */
 public class ValicodeUtil {
     /**

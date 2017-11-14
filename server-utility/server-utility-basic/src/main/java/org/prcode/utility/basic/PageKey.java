@@ -1,10 +1,10 @@
 package org.prcode.utility.basic;
 
 /**
- * @ClassName: PageKey
- * @Date: 2017-04-01 14:39
- * @Auther: kangduo
- * @Description: (分页对象)
+ * @className: PageKey
+ * @date: 2017-04-01 14:39
+ * @author: kangduo
+ * @description: (分页对象)
  */
 public class PageKey {
     //页码，从1开始，默认第一页

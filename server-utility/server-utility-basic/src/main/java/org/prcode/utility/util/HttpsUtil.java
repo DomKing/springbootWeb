@@ -18,10 +18,10 @@ import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 
 /**
- * @ClassName: HttpsUtil
- * @Date: 2017-3-24 23:22
- * @Auther: kangduo
- * @Description: (https工具类)
+ * @className: HttpsUtil
+ * @date: 2017-3-24 23:22
+ * @author: kangduo
+ * @description: (https工具类)
  */
 public class HttpsUtil {
     private static final Logger logger = Logger.getLogger(HttpsUtil.class);

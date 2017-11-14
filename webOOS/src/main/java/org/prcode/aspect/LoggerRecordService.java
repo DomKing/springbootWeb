@@ -8,10 +8,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
- * @ClassName: LoggerRecordService
- * @Date: 2017-03-30 16:00
- * @Auther: kangduo
- * @Description: ()
+ * @className: LoggerRecordService
+ * @date: 2017-03-30 16:00
+ * @author: kangduo
+ * @description: ()
  */
 @Service
 public class LoggerRecordService {

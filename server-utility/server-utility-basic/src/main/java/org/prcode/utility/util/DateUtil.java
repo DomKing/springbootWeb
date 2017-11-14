@@ -7,10 +7,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @ClassName: DateUtil
- * @Date: 2017-03-24 15:47
- * @Auther: kangduo
- * @Description: (日期工具类)
+ * @className: DateUtil
+ * @date: 2017-03-24 15:47
+ * @author: kangduo
+ * @description: (日期工具类)
  */
 public class DateUtil {
 

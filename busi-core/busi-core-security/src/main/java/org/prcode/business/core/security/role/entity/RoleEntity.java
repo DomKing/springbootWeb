@@ -10,10 +10,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @ClassName: RoleEntity
- * @Date: 2017-4-22 14:58
- * @Auther: kangduo
- * @Description: ()
+ * @className: RoleEntity
+ * @date: 2017-4-22 14:58
+ * @author: kangduo
+ * @description: ()
  */
 public class RoleEntity implements Serializable{
     private static final long serialVersionUID = 7325858210842114309L;
@@ -32,8 +32,10 @@ public class RoleEntity implements Serializable{
     @NotEmpty(message = "必须选择权限", groups = Create.class)
     private List<String> resourceUrlIds;
 
-    //拥有的权限
-    private List<rolePrivilege> privileges;
+    /**
+     * 拥有的权限
+     */
+    private List<RolePrivilege> privileges;
 
     public String getId() {
         return id;
@@ -83,11 +85,11 @@ public class RoleEntity implements Serializable{
         this.resourceUrlIds = resourceUrlIds;
     }
 
-    public List<rolePrivilege> getPrivileges() {
+    public List<RolePrivilege> getPrivileges() {
         return privileges;
     }
 
-    public void setPrivileges(List<rolePrivilege> privileges) {
+    public void setPrivileges(List<RolePrivilege> privileges) {
         this.privileges = privileges;
     }
 }

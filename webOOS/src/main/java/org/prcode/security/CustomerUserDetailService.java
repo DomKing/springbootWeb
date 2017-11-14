@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.prcode.business.support.basic.security.domain.CustomerUserDetail;
-import org.prcode.business.support.basic.security.service.ISecurityService;
+import org.prcode.business.support.basic.security.service.SecurityService;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,16 +14,16 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
- * @ClassName: CustomerUserDetailService
- * @Date: 2017-4-16 15:26
- * @Auther: kangduo
- * @Description: ()
+ * @className: CustomerUserDetailService
+ * @date: 2017-4-16 15:26
+ * @author: kangduo
+ * @description: ()
  */
 @Component
 public class CustomerUserDetailService implements UserDetailsService {
 
     @Resource
-    private ISecurityService securityService;
+    private SecurityService securityService;
 
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();

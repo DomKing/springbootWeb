@@ -5,10 +5,10 @@ import org.prcode.business.basedomain.role.domain.Role;
 import java.util.List;
 
 /**
- * @ClassName: CustomerUrlRoles
- * @Date: 2017-4-16 20:42
- * @Auther: kangduo
- * @Description: (url对应的可访问角色列表)
+ * @className: CustomerUrlRoles
+ * @date: 2017-4-16 20:42
+ * @author: kangduo
+ * @description: (url对应的可访问角色列表)
  */
 public class CustomerUrlRoles {
     private String url;

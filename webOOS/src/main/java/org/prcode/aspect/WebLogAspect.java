@@ -34,10 +34,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
- * @ClassName: WebLogAspect
- * @Date: 2017-03-28 13:16
- * @Auther: kangduo
- * @Description: (日志请求AOP记录)
+ * @className: WebLogAspect
+ * @date: 2017-03-28 13:16
+ * @author: kangduo
+ * @description: (日志请求AOP记录)
  */
 @Aspect
 @Order(5)//多个切面根据order依次执行，小的先行

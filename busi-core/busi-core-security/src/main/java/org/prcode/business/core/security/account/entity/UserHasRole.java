@@ -3,10 +3,10 @@ package org.prcode.business.core.security.account.entity;
 import java.io.Serializable;
 
 /**
- * @ClassName: UserHasRole
- * @Date: 2017-4-22 16:02
- * @Auther: kangduo
- * @Description: ()
+ * @className: UserHasRole
+ * @date: 2017-4-22 16:02
+ * @author: kangduo
+ * @description: ()
  */
 public class UserHasRole implements Serializable{
     private static final long serialVersionUID = -1661880085302969664L;
@@ -50,14 +50,24 @@ public class UserHasRole implements Serializable{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         UserHasRole that = (UserHasRole) o;
 
-        if (roleId != null ? !roleId.equals(that.roleId) : that.roleId != null) return false;
-        if (roleName != null ? !roleName.equals(that.roleName) : that.roleName != null) return false;
-        if (roleDesc != null ? !roleDesc.equals(that.roleDesc) : that.roleDesc != null) return false;
+        if (roleId != null ? !roleId.equals(that.roleId) : that.roleId != null) {
+            return false;
+        }
+        if (roleName != null ? !roleName.equals(that.roleName) : that.roleName != null) {
+            return false;
+        }
+        if (roleDesc != null ? !roleDesc.equals(that.roleDesc) : that.roleDesc != null) {
+            return false;
+        }
         return hasRole != null ? hasRole.equals(that.hasRole) : that.hasRole == null;
     }
 

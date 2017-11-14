@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @ClassName: UserDao
- * @Date: 2017-4-16 15:49
- * @Auther: kangduo
- * @Description: ()
+ * @className: UserDao
+ * @date: 2017-4-16 15:49
+ * @author: kangduo
+ * @description: ()
  */
 @Repository
 public interface SecurityDao {

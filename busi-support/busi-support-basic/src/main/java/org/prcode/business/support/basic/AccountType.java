@@ -1,10 +1,10 @@
 package org.prcode.business.support.basic;
 
 /**
- * @ClassName: AccountType
- * @Date: 2017-4-19 22:32
- * @Auther: kangduo
- * @Description: (账号类型)
+ * @className: AccountType
+ * @date: 2017-4-19 22:32
+ * @author: kangduo
+ * @description: (账号类型)
  */
 public class AccountType {
     public static final byte MP_MOBILE = 1;

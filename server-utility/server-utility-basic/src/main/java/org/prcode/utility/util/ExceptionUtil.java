@@ -4,10 +4,10 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * @ClassName: ExceptionUtil
- * @Date: 2017-3-24 22:55
- * @Auther: kangduo
- * @Description: (异常工具类)
+ * @className: ExceptionUtil
+ * @date: 2017-3-24 22:55
+ * @author: kangduo
+ * @description: (异常工具类)
  */
 public class ExceptionUtil {
 

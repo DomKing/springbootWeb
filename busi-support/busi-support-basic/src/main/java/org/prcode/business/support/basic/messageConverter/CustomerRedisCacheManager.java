@@ -1,5 +1,6 @@
 package org.prcode.business.support.basic.messageConverter;
 
+import org.apache.log4j.Logger;
 import org.prcode.business.support.basic.messageConverter.annotation.CacheDuration;
 import org.prcode.utility.util.ClassUtil;
 import org.springframework.beans.factory.InitializingBean;
@@ -16,14 +17,15 @@ import java.util.*;
 import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
 
 /**
- * @ClassName: CustomerRedisCacheManager
- * @Date: 2017-04-18 15:56
- * @Auther: kangduo
- * @Description: (自定义redisCacheManager)
+ * @className: CustomerRedisCacheManager
+ * @date: 2017-04-18 15:56
+ * @author: kangduo
+ * @description: (自定义redisCacheManager)
  */
 public class CustomerRedisCacheManager extends RedisCacheManager implements InitializingBean {
 
     private static final String BASE_SCAN_PACKAGE = "org.prcode.business";
+    private static final Logger logger = Logger.getLogger(CustomerRedisCacheManager.class);
     public CustomerRedisCacheManager(RedisOperations redisOperations) {
         super(redisOperations);
     }
@@ -41,6 +43,7 @@ public class CustomerRedisCacheManager extends RedisCacheManager implements Init
         for (Class aClass : classes) {
             addCacheExpires(aClass, cacheExpires);
         }
+        logger.debug("初始化redisCacheManager, 配置有过期时间的key, 内容如下：" + cacheExpires);
         //设置有效期
         super.setExpires(cacheExpires);
     }

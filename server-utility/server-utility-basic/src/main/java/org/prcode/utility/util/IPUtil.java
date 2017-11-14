@@ -9,10 +9,10 @@ import java.net.InetAddress;
 import java.net.URL;
 
 /**
- * @ClassName: IPUtil
- * @Date: 2017-3-24 21:54
- * @Auther: kangduo
- * @Description: (ip相关工具类)
+ * @className: IPUtil
+ * @date: 2017-3-24 21:54
+ * @author: kangduo
+ * @description: (ip相关工具类)
  */
 public class IPUtil {
 

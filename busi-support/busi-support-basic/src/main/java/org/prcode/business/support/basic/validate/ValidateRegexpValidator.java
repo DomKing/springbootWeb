@@ -8,10 +8,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @ClassName: ValidateRegexpValidator
- * @Date: 2017-4-21 22:22
- * @Auther: kangduo
- * @Description: (jsr正则校验)
+ * @className: ValidateRegexpValidator
+ * @date: 2017-4-21 22:22
+ * @author: kangduo
+ * @description: (jsr正则校验)
  */
 public class ValidateRegexpValidator implements ConstraintValidator<ValidateRegexp, Object> {
 

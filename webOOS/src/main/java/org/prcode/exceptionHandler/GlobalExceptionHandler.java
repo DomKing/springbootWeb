@@ -23,10 +23,10 @@ import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * @ClassName: GlobalExceptionHandler
- * @Date: 2017-03-28 10:44
- * @Auther: kangduo
- * @Description: (统一异常处理器, 约定 json 数据格式请求的必须以 .json 为路径结束, 非 json 请求, 不得以 .json 结尾)
+ * @className: GlobalExceptionHandler
+ * @date: 2017-03-28 10:44
+ * @author: kangduo
+ * @description: (统一异常处理器, 约定 json 数据格式请求的必须以 .json 为路径结束, 非 json 请求, 不得以 .json 结尾)
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {

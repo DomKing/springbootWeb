@@ -1,7 +1,7 @@
 package org.prcode.business.support.basic.security.config;
 
 import org.prcode.business.basedomain.resourceUrl.domain.ResourceUrl;
-import org.prcode.business.support.basic.security.service.ISecurityService;
+import org.prcode.business.support.basic.security.service.SecurityService;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,18 +10,18 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * @ClassName: CsrfSecurityRequestMatcher
- * @Date: 2017-4-16 19:53
- * @Auther: kangduo
- * @Description: (csrf)
+ * @className: CsrfSecurityRequestMatcher
+ * @date: 2017-4-16 19:53
+ * @author: kangduo
+ * @description: (csrf)
  */
 public class CsrfSecurityRequestMatcher implements RequestMatcher {
 
-    private ISecurityService securityService;
+    private SecurityService securityService;
     private String systemCode;
     private Pattern allowedMethods = Pattern.compile("^(GET|HEAD|TRACE|OPTIONS)$");
 
-    public CsrfSecurityRequestMatcher(ISecurityService securityService, String systemCode) {
+    public CsrfSecurityRequestMatcher(SecurityService securityService, String systemCode) {
         this.securityService = securityService;
         this.systemCode = systemCode;
     }

@@ -13,10 +13,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @ClassName: Swagger2
- * @Date: 2017-03-28 10:17
- * @Auther: kangduo
- * @Description: (swagger配置)
+ * @className: Swagger2
+ * @date: 2017-03-28 10:17
+ * @author: kangduo
+ * @description: (swagger配置)
  */
 @Configuration
 @EnableSwagger2

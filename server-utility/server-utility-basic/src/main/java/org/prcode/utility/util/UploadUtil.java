@@ -14,10 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 /**
- * @ClassName: UploadUtil.
- * @Date: 2017-04-25 11:00
- * @Auther: kangduo
- * @Description: (上传文件工具类)
+ * @className: UploadUtil.
+ * @date: 2017-04-25 11:00
+ * @author: kangduo
+ * @description: (上传文件工具类)
  */
 public class UploadUtil {
 

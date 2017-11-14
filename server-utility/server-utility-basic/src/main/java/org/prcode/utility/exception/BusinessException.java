@@ -1,10 +1,10 @@
 package org.prcode.utility.exception;
 
 /**
- * @ClassName: BusinessException
- * @Date: 2017-03-24 13:28
- * @Auther: kangduo
- * @Description: (业务异常, 如输入数据有问题导致的查询无结果, 业务不对等)
+ * @className: BusinessException
+ * @date: 2017-03-24 13:28
+ * @author: kangduo
+ * @description: (业务异常, 如输入数据有问题导致的查询无结果, 业务不对等)
  */
 public class BusinessException extends Exception{
 

@@ -11,10 +11,10 @@ import javax.crypto.spec.DESKeySpec;
 import java.security.SecureRandom;
 
 /**
- * @ClassName: PropertyDESUtil
- * @Date: 2017-03-24 14:28
- * @Auther: kangduo
- * @Description: (DES实现可逆加密类文件,用于对配置文件中密码进行加密解密)
+ * @className: PropertyDESUtil
+ * @date: 2017-03-24 14:28
+ * @author: kangduo
+ * @description: (DES实现可逆加密类文件,用于对配置文件中密码进行加密解密)
  */
 public class PropertyDESUtil {
 
@@ -44,8 +44,8 @@ public class PropertyDESUtil {
     }
 
     /**
-     * @Title: encrypt
-     * @Description: (对原始密码进行加密, 返回加密后的密文)
+     * @title: encrypt
+     * @description: (对原始密码进行加密, 返回加密后的密文)
      * @param rawPass 原始密码
      * @return 加密后的密码
      * @throws DESException
@@ -61,8 +61,8 @@ public class PropertyDESUtil {
     }
 
     /**
-     * @Title: encrypt
-     * @Description: (对原始密码进行加密, 返回加密后的密文)
+     * @title: encrypt
+     * @description: (对原始密码进行加密, 返回加密后的密文)
      * @param rawPass 原始密码
      * @param byteData 盐值
      * @return 加密后的密码
@@ -90,8 +90,8 @@ public class PropertyDESUtil {
 
     /**
      *
-     * @Title: decrypt
-     * @Description: (对无盐值的密码进行解密, 返回解密后的原文)
+     * @title: decrypt
+     * @description: (对无盐值的密码进行解密, 返回解密后的原文)
      * @param ciphertext 原文
      * @return 解密后的字符
      * @throws DESException
@@ -111,8 +111,8 @@ public class PropertyDESUtil {
 
     /**
      *
-     * @Title: decrypt
-     * @Description: (对带盐值的密码进行解密, 返回解密后的原文)
+     * @title: decrypt
+     * @description: (对带盐值的密码进行解密, 返回解密后的原文)
      * @param ciphertext 原文
      * @param byteData 盐值
      * @return 解密后的字符

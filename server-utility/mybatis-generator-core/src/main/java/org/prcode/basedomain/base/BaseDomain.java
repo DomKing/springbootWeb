@@ -3,10 +3,10 @@ package org.prcode.basedomain.base;
 import java.util.Date;
 
 /**
- * @ClassName: BaseDomain
- * @Date: 2017-3-25 19:45
- * @Auther: kangduo
- * @Description: (数据库表需要继承的基类)
+ * @className: BaseDomain
+ * @date: 2017-3-25 19:45
+ * @author: kangduo
+ * @description: (数据库表需要继承的基类)
  */
 public class BaseDomain {
 

@@ -3,10 +3,10 @@ package org.prcode.business.core.security.resourceUrl.entity;
 import java.io.Serializable;
 
 /**
- * @ClassName: Menu
- * @Date: 2017-4-19 21:20
- * @Auther: kangduo
- * @Description: (菜单)
+ * @className: Menu
+ * @date: 2017-4-19 21:20
+ * @author: kangduo
+ * @description: (菜单)
  */
 public class Menu implements Serializable {
     private static final long serialVersionUID = 3965859156413630061L;

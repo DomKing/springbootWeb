@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2015 Shenzhen virgo network technology Co., Ltd. All rights reserved. 
  *
- * @Date:2015年10月20日 下午2:46:47
+ * @date:2015年10月20日 下午2:46:47
  *
  * @Version V1.0
  */
@@ -10,10 +10,10 @@ package org.prcode.utility.util.support.excel.domain;
 import java.util.List;
 
 /**
- * @ClassName: ExcelDTO
- * @Date: 2017-04-24 15:47
- * @Auther: kangduo
- * @Description: (excel数据集合DTO)
+ * @className: ExcelDTO
+ * @date: 2017-04-24 15:47
+ * @author: kangduo
+ * @description: (excel数据集合DTO)
  */
 public class ExcelDTO {
 	/**

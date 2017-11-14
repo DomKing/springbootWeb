@@ -14,8 +14,9 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.log4j.Logger;
 import org.prcode.business.support.basic.cache.constant.CommSysParaCode;
-import org.prcode.business.support.basic.cache.service.ICommSysParaService;
+import org.prcode.business.support.basic.cache.service.CommSysParaService;
 import org.prcode.utility.exception.BusinessException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -24,10 +25,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 /**
- * @ClassName: SimpleMailSender
- * @Date: 2017-03-31 15:17
- * @Auther: kangduo
- * @Description: (邮件发送工具)
+ * @className: SimpleMailSender
+ * @date: 2017-03-31 15:17
+ * @author: kangduo
+ * @description: (邮件发送工具)
  */
 @Component
 public class SimpleMailSender {
@@ -40,11 +41,12 @@ public class SimpleMailSender {
     @Resource
     private JavaMailSender mailSender;
 
+    @Qualifier("freeMarkerConfiguration")
     @Resource
     private Configuration configuration;
 
     @Resource
-    private ICommSysParaService busiSupportCacheService;
+    private CommSysParaService busiSupportCacheService;
 
     /**
      * 异步发送邮件.
@@ -69,7 +71,8 @@ public class SimpleMailSender {
 
         //如果没开启邮件发送，则不发邮件
         String emailSwitch = busiSupportCacheService.getCommSysParaValue(CommSysParaCode.EMAIL_SWITCH);
-        if (!"1".equals(emailSwitch)) {
+        String switchStr = "1";
+        if (!switchStr.equals(emailSwitch)) {
             return;
         }
 

@@ -12,10 +12,10 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 /**
- * @ClassName: ClassUtil
- * @Date: 2017-4-23 18:15
- * @Auther: https://www.oschina.net/code/snippet_234657_22722
- * @Description: (class工具类)
+ * @className: ClassUtil
+ * @date: 2017-4-23 18:15
+ * @author: https://www.oschina.net/code/snippet_234657_22722
+ * @description: (class工具类)
  */
 public class ClassUtil {
 
