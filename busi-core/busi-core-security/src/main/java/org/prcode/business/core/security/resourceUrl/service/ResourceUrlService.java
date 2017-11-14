@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface ResourceUrlService {
 
-    List<Menu> getMenuListByUser(String userId, String systemCode);
+    List<Menu> getMenuListByUser(Long userId, String systemCode);
 }

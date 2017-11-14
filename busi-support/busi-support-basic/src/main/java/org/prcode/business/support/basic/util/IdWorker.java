@@ -17,27 +17,36 @@ import org.springframework.stereotype.Component;
 @Component
 public class IdWorker {
 
-    private static final long WORKER_ID;
-    private static final long DATA_CENTER_ID;
-    private static final SequenceUtil SEQUENCE_UTIL;
+    private Long workerId;
+    private Long dataCenterId;
+    private SequenceUtil sequenceUtil;
     private static final SecureRandom RAND = new SecureRandom();
     private static final int RAND_AREA = 31;
     private static final String ID_WORKER_CONFIG_PREFIX = "idWorker:config:";
-    static {
-        long workerId = RAND.nextInt(RAND_AREA);
-        long centerId = RAND.nextInt(RAND_AREA);
-        while (RedisUtil.exists(ID_WORKER_CONFIG_PREFIX + centerId + "_" + workerId)) {
-            workerId = RAND.nextInt(RAND_AREA);
-            centerId = RAND.nextInt(RAND_AREA);
+
+    private static IdWorker ourInstance = new IdWorker();
+
+    public static IdWorker getInstance() {
+        if (ourInstance.workerId == null || ourInstance.dataCenterId == null) {
+            long workerId = RAND.nextInt(RAND_AREA);
+            long centerId = RAND.nextInt(RAND_AREA);
+            while (RedisUtil.exists(ID_WORKER_CONFIG_PREFIX + centerId + "_" + workerId)) {
+                workerId = RAND.nextInt(RAND_AREA);
+                centerId = RAND.nextInt(RAND_AREA);
+            }
+            ourInstance.workerId = workerId;
+            ourInstance.dataCenterId = centerId;
         }
-        WORKER_ID = workerId;
-        DATA_CENTER_ID = centerId;
-        SEQUENCE_UTIL = new SequenceUtil(WORKER_ID, DATA_CENTER_ID);
+        return ourInstance;
     }
+
+    private IdWorker() {
+    }
+
 
     @PreDestroy
     public void destroy() {
-        String key = ID_WORKER_CONFIG_PREFIX + DATA_CENTER_ID + "_" + WORKER_ID;
+        String key = ID_WORKER_CONFIG_PREFIX + dataCenterId + "_" + workerId;
         RedisUtil.del(key);
     }
 
@@ -50,6 +59,7 @@ public class IdWorker {
     }
 
     public static Long getLongId() {
-        return SEQUENCE_UTIL.nextId();
+        IdWorker idWorker = getInstance();
+        return new SequenceUtil(idWorker.workerId, idWorker.dataCenterId).nextId();
     }
 }

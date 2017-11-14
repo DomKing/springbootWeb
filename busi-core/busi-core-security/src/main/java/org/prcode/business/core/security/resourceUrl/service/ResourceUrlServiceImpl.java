@@ -19,7 +19,7 @@ public class ResourceUrlServiceImpl implements ResourceUrlService {
     private ResourceUrlDao resourceUrlDao;
 
     @Override
-    public List<Menu> getMenuListByUser(String userId, String systemCode) {
+    public List<Menu> getMenuListByUser(Long userId, String systemCode) {
         return resourceUrlDao.getMenuListByUser(userId, systemCode);
     }
 

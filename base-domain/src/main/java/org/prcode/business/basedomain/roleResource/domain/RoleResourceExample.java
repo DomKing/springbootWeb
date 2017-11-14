@@ -205,62 +205,52 @@ public class RoleResourceExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(String value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("roleResource.f_id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(String value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("roleResource.f_id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(String value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("roleResource.f_id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(String value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(String value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("roleResource.f_id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(String value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLike(String value) {
-            addCriterion("roleResource.f_id like", value, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdNotLike(String value) {
-            addCriterion("roleResource.f_id not like", value, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdIn(List<String> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("roleResource.f_id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<String> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("roleResource.f_id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(String value1, String value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(String value1, String value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -275,62 +265,52 @@ public class RoleResourceExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdEqualTo(String value) {
+        public Criteria andRoleIdEqualTo(Long value) {
             addCriterion("roleResource.f_role_id =", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotEqualTo(String value) {
+        public Criteria andRoleIdNotEqualTo(Long value) {
             addCriterion("roleResource.f_role_id <>", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThan(String value) {
+        public Criteria andRoleIdGreaterThan(Long value) {
             addCriterion("roleResource.f_role_id >", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThanOrEqualTo(String value) {
+        public Criteria andRoleIdGreaterThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_role_id >=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThan(String value) {
+        public Criteria andRoleIdLessThan(Long value) {
             addCriterion("roleResource.f_role_id <", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThanOrEqualTo(String value) {
+        public Criteria andRoleIdLessThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_role_id <=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLike(String value) {
-            addCriterion("roleResource.f_role_id like", value, "roleId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRoleIdNotLike(String value) {
-            addCriterion("roleResource.f_role_id not like", value, "roleId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRoleIdIn(List<String> values) {
+        public Criteria andRoleIdIn(List<Long> values) {
             addCriterion("roleResource.f_role_id in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotIn(List<String> values) {
+        public Criteria andRoleIdNotIn(List<Long> values) {
             addCriterion("roleResource.f_role_id not in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdBetween(String value1, String value2) {
+        public Criteria andRoleIdBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_role_id between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotBetween(String value1, String value2) {
+        public Criteria andRoleIdNotBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_role_id not between", value1, value2, "roleId");
             return (Criteria) this;
         }
@@ -345,62 +325,52 @@ public class RoleResourceExample {
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdEqualTo(String value) {
+        public Criteria andResourceUrlIdEqualTo(Long value) {
             addCriterion("roleResource.f_resource_url_id =", value, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdNotEqualTo(String value) {
+        public Criteria andResourceUrlIdNotEqualTo(Long value) {
             addCriterion("roleResource.f_resource_url_id <>", value, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdGreaterThan(String value) {
+        public Criteria andResourceUrlIdGreaterThan(Long value) {
             addCriterion("roleResource.f_resource_url_id >", value, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdGreaterThanOrEqualTo(String value) {
+        public Criteria andResourceUrlIdGreaterThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_resource_url_id >=", value, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdLessThan(String value) {
+        public Criteria andResourceUrlIdLessThan(Long value) {
             addCriterion("roleResource.f_resource_url_id <", value, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdLessThanOrEqualTo(String value) {
+        public Criteria andResourceUrlIdLessThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_resource_url_id <=", value, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdLike(String value) {
-            addCriterion("roleResource.f_resource_url_id like", value, "resourceUrlId");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceUrlIdNotLike(String value) {
-            addCriterion("roleResource.f_resource_url_id not like", value, "resourceUrlId");
-            return (Criteria) this;
-        }
-
-        public Criteria andResourceUrlIdIn(List<String> values) {
+        public Criteria andResourceUrlIdIn(List<Long> values) {
             addCriterion("roleResource.f_resource_url_id in", values, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdNotIn(List<String> values) {
+        public Criteria andResourceUrlIdNotIn(List<Long> values) {
             addCriterion("roleResource.f_resource_url_id not in", values, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdBetween(String value1, String value2) {
+        public Criteria andResourceUrlIdBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_resource_url_id between", value1, value2, "resourceUrlId");
             return (Criteria) this;
         }
 
-        public Criteria andResourceUrlIdNotBetween(String value1, String value2) {
+        public Criteria andResourceUrlIdNotBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_resource_url_id not between", value1, value2, "resourceUrlId");
             return (Criteria) this;
         }
@@ -595,62 +565,52 @@ public class RoleResourceExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserEqualTo(String value) {
+        public Criteria andSysAddUserEqualTo(Long value) {
             addCriterion("roleResource.f_sys_add_user =", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserNotEqualTo(String value) {
+        public Criteria andSysAddUserNotEqualTo(Long value) {
             addCriterion("roleResource.f_sys_add_user <>", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserGreaterThan(String value) {
+        public Criteria andSysAddUserGreaterThan(Long value) {
             addCriterion("roleResource.f_sys_add_user >", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserGreaterThanOrEqualTo(String value) {
+        public Criteria andSysAddUserGreaterThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_sys_add_user >=", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserLessThan(String value) {
+        public Criteria andSysAddUserLessThan(Long value) {
             addCriterion("roleResource.f_sys_add_user <", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserLessThanOrEqualTo(String value) {
+        public Criteria andSysAddUserLessThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_sys_add_user <=", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserLike(String value) {
-            addCriterion("roleResource.f_sys_add_user like", value, "sysAddUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysAddUserNotLike(String value) {
-            addCriterion("roleResource.f_sys_add_user not like", value, "sysAddUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysAddUserIn(List<String> values) {
+        public Criteria andSysAddUserIn(List<Long> values) {
             addCriterion("roleResource.f_sys_add_user in", values, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserNotIn(List<String> values) {
+        public Criteria andSysAddUserNotIn(List<Long> values) {
             addCriterion("roleResource.f_sys_add_user not in", values, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserBetween(String value1, String value2) {
+        public Criteria andSysAddUserBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_sys_add_user between", value1, value2, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserNotBetween(String value1, String value2) {
+        public Criteria andSysAddUserNotBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_sys_add_user not between", value1, value2, "sysAddUser");
             return (Criteria) this;
         }
@@ -665,62 +625,52 @@ public class RoleResourceExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserEqualTo(String value) {
+        public Criteria andSysUpdUserEqualTo(Long value) {
             addCriterion("roleResource.f_sys_upd_user =", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserNotEqualTo(String value) {
+        public Criteria andSysUpdUserNotEqualTo(Long value) {
             addCriterion("roleResource.f_sys_upd_user <>", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserGreaterThan(String value) {
+        public Criteria andSysUpdUserGreaterThan(Long value) {
             addCriterion("roleResource.f_sys_upd_user >", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserGreaterThanOrEqualTo(String value) {
+        public Criteria andSysUpdUserGreaterThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_sys_upd_user >=", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserLessThan(String value) {
+        public Criteria andSysUpdUserLessThan(Long value) {
             addCriterion("roleResource.f_sys_upd_user <", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserLessThanOrEqualTo(String value) {
+        public Criteria andSysUpdUserLessThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_sys_upd_user <=", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserLike(String value) {
-            addCriterion("roleResource.f_sys_upd_user like", value, "sysUpdUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysUpdUserNotLike(String value) {
-            addCriterion("roleResource.f_sys_upd_user not like", value, "sysUpdUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysUpdUserIn(List<String> values) {
+        public Criteria andSysUpdUserIn(List<Long> values) {
             addCriterion("roleResource.f_sys_upd_user in", values, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserNotIn(List<String> values) {
+        public Criteria andSysUpdUserNotIn(List<Long> values) {
             addCriterion("roleResource.f_sys_upd_user not in", values, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserBetween(String value1, String value2) {
+        public Criteria andSysUpdUserBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_sys_upd_user between", value1, value2, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserNotBetween(String value1, String value2) {
+        public Criteria andSysUpdUserNotBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_sys_upd_user not between", value1, value2, "sysUpdUser");
             return (Criteria) this;
         }
@@ -735,62 +685,52 @@ public class RoleResourceExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserEqualTo(String value) {
+        public Criteria andSysDelUserEqualTo(Long value) {
             addCriterion("roleResource.f_sys_del_user =", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserNotEqualTo(String value) {
+        public Criteria andSysDelUserNotEqualTo(Long value) {
             addCriterion("roleResource.f_sys_del_user <>", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserGreaterThan(String value) {
+        public Criteria andSysDelUserGreaterThan(Long value) {
             addCriterion("roleResource.f_sys_del_user >", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserGreaterThanOrEqualTo(String value) {
+        public Criteria andSysDelUserGreaterThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_sys_del_user >=", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserLessThan(String value) {
+        public Criteria andSysDelUserLessThan(Long value) {
             addCriterion("roleResource.f_sys_del_user <", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserLessThanOrEqualTo(String value) {
+        public Criteria andSysDelUserLessThanOrEqualTo(Long value) {
             addCriterion("roleResource.f_sys_del_user <=", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserLike(String value) {
-            addCriterion("roleResource.f_sys_del_user like", value, "sysDelUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysDelUserNotLike(String value) {
-            addCriterion("roleResource.f_sys_del_user not like", value, "sysDelUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysDelUserIn(List<String> values) {
+        public Criteria andSysDelUserIn(List<Long> values) {
             addCriterion("roleResource.f_sys_del_user in", values, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserNotIn(List<String> values) {
+        public Criteria andSysDelUserNotIn(List<Long> values) {
             addCriterion("roleResource.f_sys_del_user not in", values, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserBetween(String value1, String value2) {
+        public Criteria andSysDelUserBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_sys_del_user between", value1, value2, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserNotBetween(String value1, String value2) {
+        public Criteria andSysDelUserNotBetween(Long value1, Long value2) {
             addCriterion("roleResource.f_sys_del_user not between", value1, value2, "sysDelUser");
             return (Criteria) this;
         }

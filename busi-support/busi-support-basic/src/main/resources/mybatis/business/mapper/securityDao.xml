@@ -3,8 +3,8 @@
 <mapper namespace="org.prcode.business.support.basic.security.dao.SecurityDao">
 
     <resultMap id="customerUserDetailResMap" type="org.prcode.business.support.basic.security.domain.CustomerUserDetail">
-        <id column="userId" property="id" javaType="java.lang.String"/>
-        <id column="unionId" property="unionId" javaType="java.lang.String"/>
+        <id column="userId" property="id" javaType="java.lang.Long"/>
+        <result column="unionId" property="unionId" javaType="java.lang.String"/>
         <result column="username" property="username" javaType="java.lang.String"/>
         <result column="nickName" property="nickName" javaType="java.lang.String"/>
         <result column="password" property="password" javaType="java.lang.String"/>
@@ -12,7 +12,7 @@
         <collection property="roles" resultMap="userRoleResMap"/>
     </resultMap>
     <resultMap id="userRoleResMap" type="org.prcode.business.basedomain.role.domain.Role">
-        <id column="roleId" property="id" javaType="java.lang.String"/>
+        <id column="roleId" property="id" javaType="java.lang.Long"/>
         <result column="roleName" property="roleName" javaType="java.lang.String"/>
         <result column="roleCode" property="roleCode" javaType="java.lang.String"/>
     </resultMap>

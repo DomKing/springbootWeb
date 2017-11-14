@@ -10,6 +10,7 @@ import org.prcode.business.core.security.role.dao.RoleDao;
 import org.prcode.business.core.security.role.entity.RoleEntity;
 import org.prcode.business.support.basic.SystemConstant;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
+import org.prcode.business.support.basic.util.IdWorker;
 import org.prcode.utility.exception.BusinessException;
 import org.prcode.utility.util.UUIDGenerator;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,7 @@ public class RoleServiceImpl implements RoleService {
         entity.setRoleCode("ROLE_" + entity.getRoleCode());
         Role role = addRoleBasic(entity);
         //添加角色权限
-        addRoleResource(entity, role.getId());
+        addRoleResource(entity, IdWorker.getLongId());
         return 1;
     }
 
@@ -58,7 +59,7 @@ public class RoleServiceImpl implements RoleService {
 
     private Role addRoleBasic(RoleEntity entity) {
         Role role = new Role();
-        role.setId(UUIDGenerator.getId());
+        role.setId(IdWorker.getLongId());
         role.setRoleName(entity.getRoleName());
         role.setRoleCode(entity.getRoleCode());
         role.setRoleDesc(entity.getRoleDesc());
@@ -87,15 +88,15 @@ public class RoleServiceImpl implements RoleService {
         return 1;
     }
 
-    private void addRoleResource(RoleEntity entity, String roleId) {
-        List<String> resourceIds = entity.getResourceUrlIds();
+    private void addRoleResource(RoleEntity entity, Long roleId) {
+        List<Long> resourceIds = entity.getResourceUrlIds();
         List<RoleResource> roleResourceList = new ArrayList<>(resourceIds.size());
         RoleResource roleResource;
         Date now = new Date();
-        String operId = SecurityUtil.getOperId();
-        for (String resourceId : resourceIds) {
+        Long operId = SecurityUtil.getOperId();
+        for (Long resourceId : resourceIds) {
             roleResource = new RoleResource();
-            roleResource.setId(UUIDGenerator.getId());
+            roleResource.setId(IdWorker.getLongId());
             roleResource.setRoleId(roleId);
             roleResource.setResourceUrlId(resourceId);
             roleResource.setSysAddTime(now);

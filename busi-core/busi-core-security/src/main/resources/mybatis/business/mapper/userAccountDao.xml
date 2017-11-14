@@ -3,7 +3,7 @@
 <mapper namespace="org.prcode.business.core.security.account.dao.UserAccountDao">
 
     <resultMap id="userAccountMap" type="org.prcode.business.core.security.account.entity.UserAccount">
-        <id property="userId" column="uId" javaType="java.lang.String"/>
+        <id property="userId" column="uId" javaType="java.lang.Long"/>
         <result property="username" column="username" javaType="java.lang.String"/>
         <result property="mobile" column="mobile" javaType="java.lang.String"/>
         <result property="userAccount" column="userAccount" javaType="java.lang.String"/>
@@ -12,7 +12,7 @@
                     select="getUserRoles" column="{uId = uId, systemCode = systemCode}"/>
     </resultMap>
     <resultMap id="userRoleMap" type="org.prcode.business.core.security.account.entity.UserHasRole">
-        <id column="roleId" property="roleId" javaType="java.lang.String"/>
+        <id column="roleId" property="roleId" javaType="java.lang.Long"/>
         <result column="roleName" property="roleName" javaType="java.lang.String"/>
         <result column="roleDesc" property="roleDesc" javaType="java.lang.String"/>
         <result column="hasRole" property="hasRole" javaType="java.lang.Boolean"/>

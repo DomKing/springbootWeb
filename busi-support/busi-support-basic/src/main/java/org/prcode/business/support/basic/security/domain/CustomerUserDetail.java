@@ -18,7 +18,7 @@ import java.util.List;
 public class CustomerUserDetail implements UserDetails{
 
     private static final long serialVersionUID = -7669892055159148557L;
-    private String id;
+    private Long id;
 
     /**
      * 微信unionId
@@ -30,11 +30,11 @@ public class CustomerUserDetail implements UserDetails{
     private Byte accountType;
     private List<Role> roles;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

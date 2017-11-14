@@ -11,16 +11,16 @@ import java.io.Serializable;
 public class UserHasRole implements Serializable{
     private static final long serialVersionUID = -1661880085302969664L;
 
-    private String roleId;
+    private Long roleId;
     private String roleName;
     private String roleDesc;
     private Boolean hasRole;
 
-    public String getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(String roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 

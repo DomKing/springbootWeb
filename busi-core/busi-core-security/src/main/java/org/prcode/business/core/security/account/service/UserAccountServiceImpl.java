@@ -13,6 +13,7 @@ import org.prcode.business.core.security.account.entity.UserAccount;
 import org.prcode.business.core.security.account.entity.UserHasRole;
 import org.prcode.business.support.basic.AccountType;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
+import org.prcode.business.support.basic.util.IdWorker;
 import org.prcode.utility.exception.BusinessException;
 import org.prcode.utility.util.StringUtil;
 import org.prcode.utility.util.UUIDGenerator;
@@ -79,7 +80,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
 
         Date now = new Date();
-        String operId = SecurityUtil.getOperId();
+        Long operId = SecurityUtil.getOperId();
         //插入User表
         User user = addUser(account, now, operId);
         //插入LoginNo表
@@ -108,9 +109,9 @@ public class UserAccountServiceImpl implements UserAccountService {
         return 1;
     }
 
-    private User addUser(UserAccount account, Date now, String operId) {
+    private User addUser(UserAccount account, Date now, Long operId) {
         User user = new User();
-        user.setId(UUIDGenerator.getId());
+        user.setId(IdWorker.getLongId());
         user.setUserName(account.getUserAccount());
         user.setSysAddTime(now);
         user.setSysAddUser(operId);
@@ -118,9 +119,9 @@ public class UserAccountServiceImpl implements UserAccountService {
         return user;
     }
 
-    private void addLoginNo(UserAccount account, String userId, byte accountType, Date now, String operId) {
+    private void addLoginNo(UserAccount account, Long userId, byte accountType, Date now, Long operId) {
         LoginNo loginNo = new LoginNo();
-        loginNo.setId(UUIDGenerator.getId());
+        loginNo.setId(IdWorker.getLongId());
         loginNo.setType(accountType);
         loginNo.setUserId(userId);
         loginNo.setUserAccount(account.getUsername() == null? account.getUserAccount() : account.getUsername());
@@ -131,13 +132,13 @@ public class UserAccountServiceImpl implements UserAccountService {
         loginNoMapper.insertSelective(loginNo);
     }
 
-    private void addUserRoles(UserAccount account,String userId, Date now, String operId) {
+    private void addUserRoles(UserAccount account, Long userId, Date now, Long operId) {
         UserRole userRole;
-        List<String> roleIds = account.getRoleIds();
+        List<Long> roleIds = account.getRoleIds();
         List<UserRole> roles = new ArrayList<>(roleIds.size());
-        for (String roleId : roleIds) {
+        for (Long roleId : roleIds) {
             userRole = new UserRole();
-            userRole.setId(UUIDGenerator.getId());
+            userRole.setId(IdWorker.getLongId());
             userRole.setUserId(userId);
             userRole.setRoleId(roleId);
             userRole.setSysAddTime(now);

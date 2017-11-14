@@ -13,6 +13,7 @@ import org.prcode.business.basedomain.loginLog.dao.LoginLogMapper;
 import org.prcode.business.basedomain.loginLog.domain.LoginLog;
 import org.prcode.business.support.basic.SystemConstant;
 import org.prcode.business.support.basic.security.domain.CustomerUserDetail;
+import org.prcode.business.support.basic.util.IdWorker;
 import org.prcode.utility.util.DateUtil;
 import org.prcode.utility.util.UUIDGenerator;
 import org.springframework.security.core.Authentication;
@@ -40,7 +41,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         //记录登录成功日志
         CustomerUserDetail userDetails = (CustomerUserDetail)authentication.getPrincipal();
         LoginLog loginLog = new LoginLog();
-        loginLog.setId(UUIDGenerator.getId());
+        loginLog.setId(IdWorker.getLongId());
         loginLog.setUserAccount(userDetails.getUsername());
         loginLog.setUserId(userDetails.getId());
         loginLog.setSystemCode(SystemConstant.OOS_SYSTEM);

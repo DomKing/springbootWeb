@@ -18,7 +18,7 @@ import java.util.List;
 public class RoleEntity implements Serializable{
     private static final long serialVersionUID = 7325858210842114309L;
 
-    private String id;
+    private Long id;
     @NotBlank(message = "请输入角色名", groups = Create.class)
     private String roleName;
     @NotBlank(message = "请输入角色code", groups = Create.class)
@@ -30,18 +30,18 @@ public class RoleEntity implements Serializable{
     private Byte roleState;
 
     @NotEmpty(message = "必须选择权限", groups = Create.class)
-    private List<String> resourceUrlIds;
+    private List<Long> resourceUrlIds;
 
     /**
      * 拥有的权限
      */
     private List<RolePrivilege> privileges;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,11 +77,11 @@ public class RoleEntity implements Serializable{
         this.roleState = roleState;
     }
 
-    public List<String> getResourceUrlIds() {
+    public List<Long> getResourceUrlIds() {
         return resourceUrlIds;
     }
 
-    public void setResourceUrlIds(List<String> resourceUrlIds) {
+    public void setResourceUrlIds(List<Long> resourceUrlIds) {
         this.resourceUrlIds = resourceUrlIds;
     }
 

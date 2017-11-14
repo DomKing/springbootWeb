@@ -21,7 +21,7 @@ public class UserAccount implements Serializable {
     private static final long serialVersionUID = -6819122784304918758L;
 
     @NotBlank(message = "用户ID不可为空", groups = {Edit.class})
-    private String userId;
+    private Long userId;
     /**
      * loginNo中的userAccount
      */
@@ -45,13 +45,13 @@ public class UserAccount implements Serializable {
     private Set<UserHasRole> roleList;
 
     @NotEmpty(message = "必须选择角色", groups = {Create.class, Edit.class})
-    private List<String> roleIds;
+    private List<Long> roleIds;
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -119,11 +119,11 @@ public class UserAccount implements Serializable {
         this.roleList = roleList;
     }
 
-    public List<String> getRoleIds() {
+    public List<Long> getRoleIds() {
         return roleIds;
     }
 
-    public void setRoleIds(List<String> roleIds) {
+    public void setRoleIds(List<Long> roleIds) {
         this.roleIds = roleIds;
     }
 

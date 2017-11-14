@@ -325,62 +325,52 @@ public class OosLoggerExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(String value) {
+        public Criteria andUserIdEqualTo(Long value) {
             addCriterion("oosLogger.f_user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(String value) {
+        public Criteria andUserIdNotEqualTo(Long value) {
             addCriterion("oosLogger.f_user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(String value) {
+        public Criteria andUserIdGreaterThan(Long value) {
             addCriterion("oosLogger.f_user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(String value) {
+        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(String value) {
+        public Criteria andUserIdLessThan(Long value) {
             addCriterion("oosLogger.f_user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(String value) {
+        public Criteria andUserIdLessThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLike(String value) {
-            addCriterion("oosLogger.f_user_id like", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotLike(String value) {
-            addCriterion("oosLogger.f_user_id not like", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIn(List<String> values) {
+        public Criteria andUserIdIn(List<Long> values) {
             addCriterion("oosLogger.f_user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<String> values) {
+        public Criteria andUserIdNotIn(List<Long> values) {
             addCriterion("oosLogger.f_user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(String value1, String value2) {
+        public Criteria andUserIdBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(String value1, String value2) {
+        public Criteria andUserIdNotBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
@@ -1375,62 +1365,52 @@ public class OosLoggerExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserEqualTo(String value) {
+        public Criteria andSysAddUserEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_add_user =", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserNotEqualTo(String value) {
+        public Criteria andSysAddUserNotEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_add_user <>", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserGreaterThan(String value) {
+        public Criteria andSysAddUserGreaterThan(Long value) {
             addCriterion("oosLogger.f_sys_add_user >", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserGreaterThanOrEqualTo(String value) {
+        public Criteria andSysAddUserGreaterThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_add_user >=", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserLessThan(String value) {
+        public Criteria andSysAddUserLessThan(Long value) {
             addCriterion("oosLogger.f_sys_add_user <", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserLessThanOrEqualTo(String value) {
+        public Criteria andSysAddUserLessThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_add_user <=", value, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserLike(String value) {
-            addCriterion("oosLogger.f_sys_add_user like", value, "sysAddUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysAddUserNotLike(String value) {
-            addCriterion("oosLogger.f_sys_add_user not like", value, "sysAddUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysAddUserIn(List<String> values) {
+        public Criteria andSysAddUserIn(List<Long> values) {
             addCriterion("oosLogger.f_sys_add_user in", values, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserNotIn(List<String> values) {
+        public Criteria andSysAddUserNotIn(List<Long> values) {
             addCriterion("oosLogger.f_sys_add_user not in", values, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserBetween(String value1, String value2) {
+        public Criteria andSysAddUserBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_sys_add_user between", value1, value2, "sysAddUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysAddUserNotBetween(String value1, String value2) {
+        public Criteria andSysAddUserNotBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_sys_add_user not between", value1, value2, "sysAddUser");
             return (Criteria) this;
         }
@@ -1445,62 +1425,52 @@ public class OosLoggerExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserEqualTo(String value) {
+        public Criteria andSysUpdUserEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_upd_user =", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserNotEqualTo(String value) {
+        public Criteria andSysUpdUserNotEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_upd_user <>", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserGreaterThan(String value) {
+        public Criteria andSysUpdUserGreaterThan(Long value) {
             addCriterion("oosLogger.f_sys_upd_user >", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserGreaterThanOrEqualTo(String value) {
+        public Criteria andSysUpdUserGreaterThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_upd_user >=", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserLessThan(String value) {
+        public Criteria andSysUpdUserLessThan(Long value) {
             addCriterion("oosLogger.f_sys_upd_user <", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserLessThanOrEqualTo(String value) {
+        public Criteria andSysUpdUserLessThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_upd_user <=", value, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserLike(String value) {
-            addCriterion("oosLogger.f_sys_upd_user like", value, "sysUpdUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysUpdUserNotLike(String value) {
-            addCriterion("oosLogger.f_sys_upd_user not like", value, "sysUpdUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysUpdUserIn(List<String> values) {
+        public Criteria andSysUpdUserIn(List<Long> values) {
             addCriterion("oosLogger.f_sys_upd_user in", values, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserNotIn(List<String> values) {
+        public Criteria andSysUpdUserNotIn(List<Long> values) {
             addCriterion("oosLogger.f_sys_upd_user not in", values, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserBetween(String value1, String value2) {
+        public Criteria andSysUpdUserBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_sys_upd_user between", value1, value2, "sysUpdUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysUpdUserNotBetween(String value1, String value2) {
+        public Criteria andSysUpdUserNotBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_sys_upd_user not between", value1, value2, "sysUpdUser");
             return (Criteria) this;
         }
@@ -1515,62 +1485,52 @@ public class OosLoggerExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserEqualTo(String value) {
+        public Criteria andSysDelUserEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_del_user =", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserNotEqualTo(String value) {
+        public Criteria andSysDelUserNotEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_del_user <>", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserGreaterThan(String value) {
+        public Criteria andSysDelUserGreaterThan(Long value) {
             addCriterion("oosLogger.f_sys_del_user >", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserGreaterThanOrEqualTo(String value) {
+        public Criteria andSysDelUserGreaterThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_del_user >=", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserLessThan(String value) {
+        public Criteria andSysDelUserLessThan(Long value) {
             addCriterion("oosLogger.f_sys_del_user <", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserLessThanOrEqualTo(String value) {
+        public Criteria andSysDelUserLessThanOrEqualTo(Long value) {
             addCriterion("oosLogger.f_sys_del_user <=", value, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserLike(String value) {
-            addCriterion("oosLogger.f_sys_del_user like", value, "sysDelUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysDelUserNotLike(String value) {
-            addCriterion("oosLogger.f_sys_del_user not like", value, "sysDelUser");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysDelUserIn(List<String> values) {
+        public Criteria andSysDelUserIn(List<Long> values) {
             addCriterion("oosLogger.f_sys_del_user in", values, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserNotIn(List<String> values) {
+        public Criteria andSysDelUserNotIn(List<Long> values) {
             addCriterion("oosLogger.f_sys_del_user not in", values, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserBetween(String value1, String value2) {
+        public Criteria andSysDelUserBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_sys_del_user between", value1, value2, "sysDelUser");
             return (Criteria) this;
         }
 
-        public Criteria andSysDelUserNotBetween(String value1, String value2) {
+        public Criteria andSysDelUserNotBetween(Long value1, Long value2) {
             addCriterion("oosLogger.f_sys_del_user not between", value1, value2, "sysDelUser");
             return (Criteria) this;
         }
@@ -1646,6 +1606,17 @@ public class OosLoggerExample {
 
         protected Criteria() {
             super();
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table t_oos_logger
+         *
+         * @mbg.generated
+         * @project https://github.com/itfsw/mybatis-generator-plugin
+         */
+        public Criteria andDeleted(boolean deleted) {
+            return deleted ? andSysDelStateEqualTo(OosLogger.DEL_FLAG_OFF) : andSysDelStateNotEqualTo(OosLogger.DEL_FLAG_OFF);
         }
     }
 

@@ -14,5 +14,5 @@ import java.util.List;
  */
 @Repository
 public interface ResourceUrlDao {
-    public List<Menu> getMenuListByUser(@Param("userId") String userId, @Param("systemCode") String systemCode);
+    public List<Menu> getMenuListByUser(@Param("userId") Long userId, @Param("systemCode") String systemCode);
 }

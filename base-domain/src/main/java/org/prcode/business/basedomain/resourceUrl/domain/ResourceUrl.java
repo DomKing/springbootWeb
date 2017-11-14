@@ -39,7 +39,7 @@ public class ResourceUrl extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    private String id;
+    private Long id;
 
     /**
      *
@@ -66,7 +66,7 @@ public class ResourceUrl extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    private String parentId;
+    private Long parentId;
 
     /**
      *
@@ -129,7 +129,7 @@ public class ResourceUrl extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -141,8 +141,8 @@ public class ResourceUrl extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
@@ -201,7 +201,7 @@ public class ResourceUrl extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public String getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
@@ -213,8 +213,8 @@ public class ResourceUrl extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public void setParentId(String parentId) {
-        this.parentId = parentId == null ? null : parentId.trim();
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     /**

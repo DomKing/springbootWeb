@@ -11,17 +11,17 @@ import java.io.Serializable;
 public class RolePrivilege implements Serializable{
     private static final long serialVersionUID = 5888472304440886625L;
 
-    private String resourceUrlId;
+    private Long resourceUrlId;
     private String urlDesc;
-    private String parentId;
+    private Long parentId;
     private Byte level;
     private Boolean hasPrivilege;
 
-    public String getResourceUrlId() {
+    public Long getResourceUrlId() {
         return resourceUrlId;
     }
 
-    public void setResourceUrlId(String resourceUrlId) {
+    public void setResourceUrlId(Long resourceUrlId) {
         this.resourceUrlId = resourceUrlId;
     }
 
@@ -33,11 +33,11 @@ public class RolePrivilege implements Serializable{
         this.urlDesc = urlDesc;
     }
 
-    public String getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(String parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 

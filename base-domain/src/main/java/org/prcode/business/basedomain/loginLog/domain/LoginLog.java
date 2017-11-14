@@ -39,7 +39,7 @@ public class LoginLog extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    private String id;
+    private Long id;
 
     /**
      *
@@ -48,7 +48,7 @@ public class LoginLog extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    private String userId;
+    private Long userId;
 
     /**
      *
@@ -84,7 +84,7 @@ public class LoginLog extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -96,8 +96,8 @@ public class LoginLog extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
@@ -108,7 +108,7 @@ public class LoginLog extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -120,8 +120,8 @@ public class LoginLog extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     /**

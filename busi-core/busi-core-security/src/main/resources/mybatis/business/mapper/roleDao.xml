@@ -3,7 +3,7 @@
 <mapper namespace="org.prcode.business.core.security.role.dao.RoleDao">
 
     <resultMap id="roleEntityMap" type="org.prcode.business.core.security.role.entity.RoleEntity">
-        <id column="roleId" property="id" javaType="java.lang.String"/>
+        <id column="roleId" property="id" javaType="java.lang.Long"/>
         <result column="roleName" property="roleName" javaType="java.lang.String"/>
         <result column="roleDesc" property="roleDesc" javaType="java.lang.String"/>
         <result column="roleState" property="roleState" javaType="java.lang.Byte"/>
@@ -11,9 +11,9 @@
                     select="getRolePrivilege" column="{roleId = roleId, systemCode = systemCode}"/>
     </resultMap>
     <resultMap id="rolePrivilegeMap" type="org.prcode.business.core.security.role.entity.RolePrivilege">
-        <id column="resourceId" property="resourceUrlId" javaType="java.lang.String"/>
+        <id column="resourceId" property="resourceUrlId" javaType="java.lang.Long"/>
         <result column="urlDesc" property="urlDesc" javaType="java.lang.String"/>
-        <result column="parentId" property="parentId" javaType="java.lang.String"/>
+        <result column="parentId" property="parentId" javaType="java.lang.Long"/>
         <result column="level" property="level" javaType="java.lang.Byte"/>
         <result column="hasPrivilege" property="hasPrivilege" javaType="java.lang.Boolean"/>
     </resultMap>

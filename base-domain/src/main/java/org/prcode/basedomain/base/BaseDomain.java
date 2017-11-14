@@ -13,9 +13,9 @@ public class BaseDomain {
     private Date sysAddTime;
     private Date sysUpdTime;
     private Date sysDelTime;
-    private String sysAddUser;
-    private String sysUpdUser;
-    private String sysDelUser;
+    private Long sysAddUser;
+    private Long sysUpdUser;
+    private Long sysDelUser;
     private Boolean sysDelState;
 
     public Date getSysAddTime() {
@@ -46,32 +46,31 @@ public class BaseDomain {
         return sysDelTime;
     }
 
-    public String getSysAddUser() {
-        return sysAddUser;
-    }
-
-    public void setSysAddUser(String sysAddUser) {
-        this.sysAddUser = sysAddUser;
-    }
-
-    public String getSysUpdUser() {
-        return sysUpdUser;
-    }
-
-    public void setSysUpdUser(String sysUpdUser) {
-        this.sysUpdUser = sysUpdUser;
-    }
-
-    public String getSysDelUser() {
-        return sysDelUser;
-    }
-
-    public void setSysDelUser(String sysDelUser) {
-        this.sysDelUser = sysDelUser;
-    }
-
     public void setSysDelTime(Date sysDelTime) {
         this.sysDelTime = sysDelTime;
     }
 
+    public Long getSysAddUser() {
+        return sysAddUser;
+    }
+
+    public void setSysAddUser(Long sysAddUser) {
+        this.sysAddUser = sysAddUser;
+    }
+
+    public Long getSysUpdUser() {
+        return sysUpdUser;
+    }
+
+    public void setSysUpdUser(Long sysUpdUser) {
+        this.sysUpdUser = sysUpdUser;
+    }
+
+    public Long getSysDelUser() {
+        return sysDelUser;
+    }
+
+    public void setSysDelUser(Long sysDelUser) {
+        this.sysDelUser = sysDelUser;
+    }
 }

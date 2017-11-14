@@ -8,7 +8,7 @@
     -->
     <id column="commLogger_f_id" jdbcType="BIGINT" property="id" />
     <id column="commLogger_f_req_start_time" jdbcType="TIMESTAMP" property="reqStartTime" />
-    <result column="commLogger_f_user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="commLogger_f_user_id" jdbcType="BIGINT" property="userId" />
     <result column="commLogger_f_user_acc_no" jdbcType="VARCHAR" property="userAccNo" />
     <result column="commLogger_f_user_acc_type" jdbcType="TINYINT" property="userAccType" />
     <result column="commLogger_f_action_url_tail" jdbcType="VARCHAR" property="actionUrlTail" />
@@ -24,9 +24,9 @@
     <result column="commLogger_f_sys_add_time" jdbcType="TIMESTAMP" property="sysAddTime" />
     <result column="commLogger_f_sys_upd_time" jdbcType="TIMESTAMP" property="sysUpdTime" />
     <result column="commLogger_f_sys_del_time" jdbcType="TIMESTAMP" property="sysDelTime" />
-    <result column="commLogger_f_sys_add_user" jdbcType="VARCHAR" property="sysAddUser" />
-    <result column="commLogger_f_sys_upd_user" jdbcType="VARCHAR" property="sysUpdUser" />
-    <result column="commLogger_f_sys_del_user" jdbcType="VARCHAR" property="sysDelUser" />
+    <result column="commLogger_f_sys_add_user" jdbcType="BIGINT" property="sysAddUser" />
+    <result column="commLogger_f_sys_upd_user" jdbcType="BIGINT" property="sysUpdUser" />
+    <result column="commLogger_f_sys_del_user" jdbcType="BIGINT" property="sysDelUser" />
     <result column="commLogger_f_sys_del_state" jdbcType="BIT" property="sysDelState" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.prcode.log.basedomain.commLogger.domain.CommLogger">
@@ -194,13 +194,13 @@
       f_sys_upd_user, f_sys_del_user, f_sys_del_state, 
       f_request_params, f_excep_stack_info, 
       f_response_data)
-    values (#{id,jdbcType=BIGINT}, #{reqStartTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{reqStartTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=BIGINT}, 
       #{userAccNo,jdbcType=VARCHAR}, #{userAccType,jdbcType=TINYINT}, #{actionUrlTail,jdbcType=VARCHAR}, 
       #{actionUrlAll,jdbcType=VARCHAR}, #{actionResCode,jdbcType=VARCHAR}, #{isUndefinedException,jdbcType=BIT}, 
       #{ip,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, #{os,jdbcType=VARCHAR}, #{osVersion,jdbcType=VARCHAR}, 
       #{reqDealTime,jdbcType=INTEGER}, #{reqEndTime,jdbcType=TIMESTAMP}, #{sysAddTime,jdbcType=TIMESTAMP}, 
-      #{sysUpdTime,jdbcType=TIMESTAMP}, #{sysDelTime,jdbcType=TIMESTAMP}, #{sysAddUser,jdbcType=VARCHAR}, 
-      #{sysUpdUser,jdbcType=VARCHAR}, #{sysDelUser,jdbcType=VARCHAR}, #{sysDelState,jdbcType=BIT}, 
+      #{sysUpdTime,jdbcType=TIMESTAMP}, #{sysDelTime,jdbcType=TIMESTAMP}, #{sysAddUser,jdbcType=BIGINT}, 
+      #{sysUpdUser,jdbcType=BIGINT}, #{sysDelUser,jdbcType=BIGINT}, #{sysDelState,jdbcType=BIT}, 
       #{requestParams,jdbcType=LONGVARCHAR}, #{excepStackInfo,jdbcType=LONGVARCHAR}, 
       #{responseData,jdbcType=LONGVARCHAR})
   </insert>
@@ -295,7 +295,7 @@
         #{reqStartTime,jdbcType=TIMESTAMP},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=VARCHAR},
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="userAccNo != null">
         #{userAccNo,jdbcType=VARCHAR},
@@ -343,13 +343,13 @@
         #{sysDelTime,jdbcType=TIMESTAMP},
       </if>
       <if test="sysAddUser != null">
-        #{sysAddUser,jdbcType=VARCHAR},
+        #{sysAddUser,jdbcType=BIGINT},
       </if>
       <if test="sysUpdUser != null">
-        #{sysUpdUser,jdbcType=VARCHAR},
+        #{sysUpdUser,jdbcType=BIGINT},
       </if>
       <if test="sysDelUser != null">
-        #{sysDelUser,jdbcType=VARCHAR},
+        #{sysDelUser,jdbcType=BIGINT},
       </if>
       <if test="sysDelState != null">
         #{sysDelState,jdbcType=BIT},
@@ -389,7 +389,7 @@
         commLogger.f_req_start_time = #{record.reqStartTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.userId != null">
-        commLogger.f_user_id = #{record.userId,jdbcType=VARCHAR},
+        commLogger.f_user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.userAccNo != null">
         commLogger.f_user_acc_no = #{record.userAccNo,jdbcType=VARCHAR},
@@ -437,13 +437,13 @@
         commLogger.f_sys_del_time = #{record.sysDelTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.sysAddUser != null">
-        commLogger.f_sys_add_user = #{record.sysAddUser,jdbcType=VARCHAR},
+        commLogger.f_sys_add_user = #{record.sysAddUser,jdbcType=BIGINT},
       </if>
       <if test="record.sysUpdUser != null">
-        commLogger.f_sys_upd_user = #{record.sysUpdUser,jdbcType=VARCHAR},
+        commLogger.f_sys_upd_user = #{record.sysUpdUser,jdbcType=BIGINT},
       </if>
       <if test="record.sysDelUser != null">
-        commLogger.f_sys_del_user = #{record.sysDelUser,jdbcType=VARCHAR},
+        commLogger.f_sys_del_user = #{record.sysDelUser,jdbcType=BIGINT},
       </if>
       <if test="record.sysDelState != null">
         commLogger.f_sys_del_state = #{record.sysDelState,jdbcType=BIT},
@@ -470,7 +470,7 @@
     update t_comm_logger commLogger
     set commLogger.f_id = #{record.id,jdbcType=BIGINT},
       commLogger.f_req_start_time = #{record.reqStartTime,jdbcType=TIMESTAMP},
-      commLogger.f_user_id = #{record.userId,jdbcType=VARCHAR},
+      commLogger.f_user_id = #{record.userId,jdbcType=BIGINT},
       commLogger.f_user_acc_no = #{record.userAccNo,jdbcType=VARCHAR},
       commLogger.f_user_acc_type = #{record.userAccType,jdbcType=TINYINT},
       commLogger.f_action_url_tail = #{record.actionUrlTail,jdbcType=VARCHAR},
@@ -486,9 +486,9 @@
       commLogger.f_sys_add_time = #{record.sysAddTime,jdbcType=TIMESTAMP},
       commLogger.f_sys_upd_time = #{record.sysUpdTime,jdbcType=TIMESTAMP},
       commLogger.f_sys_del_time = #{record.sysDelTime,jdbcType=TIMESTAMP},
-      commLogger.f_sys_add_user = #{record.sysAddUser,jdbcType=VARCHAR},
-      commLogger.f_sys_upd_user = #{record.sysUpdUser,jdbcType=VARCHAR},
-      commLogger.f_sys_del_user = #{record.sysDelUser,jdbcType=VARCHAR},
+      commLogger.f_sys_add_user = #{record.sysAddUser,jdbcType=BIGINT},
+      commLogger.f_sys_upd_user = #{record.sysUpdUser,jdbcType=BIGINT},
+      commLogger.f_sys_del_user = #{record.sysDelUser,jdbcType=BIGINT},
       commLogger.f_sys_del_state = #{record.sysDelState,jdbcType=BIT},
       commLogger.f_request_params = #{record.requestParams,jdbcType=LONGVARCHAR},
       commLogger.f_excep_stack_info = #{record.excepStackInfo,jdbcType=LONGVARCHAR},
@@ -505,7 +505,7 @@
     update t_comm_logger commLogger
     set commLogger.f_id = #{record.id,jdbcType=BIGINT},
       commLogger.f_req_start_time = #{record.reqStartTime,jdbcType=TIMESTAMP},
-      commLogger.f_user_id = #{record.userId,jdbcType=VARCHAR},
+      commLogger.f_user_id = #{record.userId,jdbcType=BIGINT},
       commLogger.f_user_acc_no = #{record.userAccNo,jdbcType=VARCHAR},
       commLogger.f_user_acc_type = #{record.userAccType,jdbcType=TINYINT},
       commLogger.f_action_url_tail = #{record.actionUrlTail,jdbcType=VARCHAR},
@@ -521,9 +521,9 @@
       commLogger.f_sys_add_time = #{record.sysAddTime,jdbcType=TIMESTAMP},
       commLogger.f_sys_upd_time = #{record.sysUpdTime,jdbcType=TIMESTAMP},
       commLogger.f_sys_del_time = #{record.sysDelTime,jdbcType=TIMESTAMP},
-      commLogger.f_sys_add_user = #{record.sysAddUser,jdbcType=VARCHAR},
-      commLogger.f_sys_upd_user = #{record.sysUpdUser,jdbcType=VARCHAR},
-      commLogger.f_sys_del_user = #{record.sysDelUser,jdbcType=VARCHAR},
+      commLogger.f_sys_add_user = #{record.sysAddUser,jdbcType=BIGINT},
+      commLogger.f_sys_upd_user = #{record.sysUpdUser,jdbcType=BIGINT},
+      commLogger.f_sys_del_user = #{record.sysDelUser,jdbcType=BIGINT},
       commLogger.f_sys_del_state = #{record.sysDelState,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -537,7 +537,7 @@
     update t_comm_logger
     <set>
       <if test="userId != null">
-        f_user_id = #{userId,jdbcType=VARCHAR},
+        f_user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="userAccNo != null">
         f_user_acc_no = #{userAccNo,jdbcType=VARCHAR},
@@ -585,13 +585,13 @@
         f_sys_del_time = #{sysDelTime,jdbcType=TIMESTAMP},
       </if>
       <if test="sysAddUser != null">
-        f_sys_add_user = #{sysAddUser,jdbcType=VARCHAR},
+        f_sys_add_user = #{sysAddUser,jdbcType=BIGINT},
       </if>
       <if test="sysUpdUser != null">
-        f_sys_upd_user = #{sysUpdUser,jdbcType=VARCHAR},
+        f_sys_upd_user = #{sysUpdUser,jdbcType=BIGINT},
       </if>
       <if test="sysDelUser != null">
-        f_sys_del_user = #{sysDelUser,jdbcType=VARCHAR},
+        f_sys_del_user = #{sysDelUser,jdbcType=BIGINT},
       </if>
       <if test="sysDelState != null">
         f_sys_del_state = #{sysDelState,jdbcType=BIT},
@@ -615,7 +615,7 @@
       This element is automatically generated by MyBatis Generator, do not modify.
     -->
     update t_comm_logger
-    set f_user_id = #{userId,jdbcType=VARCHAR},
+    set f_user_id = #{userId,jdbcType=BIGINT},
       f_user_acc_no = #{userAccNo,jdbcType=VARCHAR},
       f_user_acc_type = #{userAccType,jdbcType=TINYINT},
       f_action_url_tail = #{actionUrlTail,jdbcType=VARCHAR},
@@ -631,9 +631,9 @@
       f_sys_add_time = #{sysAddTime,jdbcType=TIMESTAMP},
       f_sys_upd_time = #{sysUpdTime,jdbcType=TIMESTAMP},
       f_sys_del_time = #{sysDelTime,jdbcType=TIMESTAMP},
-      f_sys_add_user = #{sysAddUser,jdbcType=VARCHAR},
-      f_sys_upd_user = #{sysUpdUser,jdbcType=VARCHAR},
-      f_sys_del_user = #{sysDelUser,jdbcType=VARCHAR},
+      f_sys_add_user = #{sysAddUser,jdbcType=BIGINT},
+      f_sys_upd_user = #{sysUpdUser,jdbcType=BIGINT},
+      f_sys_del_user = #{sysDelUser,jdbcType=BIGINT},
       f_sys_del_state = #{sysDelState,jdbcType=BIT},
       f_request_params = #{requestParams,jdbcType=LONGVARCHAR},
       f_excep_stack_info = #{excepStackInfo,jdbcType=LONGVARCHAR},
@@ -647,7 +647,7 @@
       This element is automatically generated by MyBatis Generator, do not modify.
     -->
     update t_comm_logger
-    set f_user_id = #{userId,jdbcType=VARCHAR},
+    set f_user_id = #{userId,jdbcType=BIGINT},
       f_user_acc_no = #{userAccNo,jdbcType=VARCHAR},
       f_user_acc_type = #{userAccType,jdbcType=TINYINT},
       f_action_url_tail = #{actionUrlTail,jdbcType=VARCHAR},
@@ -663,10 +663,138 @@
       f_sys_add_time = #{sysAddTime,jdbcType=TIMESTAMP},
       f_sys_upd_time = #{sysUpdTime,jdbcType=TIMESTAMP},
       f_sys_del_time = #{sysDelTime,jdbcType=TIMESTAMP},
-      f_sys_add_user = #{sysAddUser,jdbcType=VARCHAR},
-      f_sys_upd_user = #{sysUpdUser,jdbcType=VARCHAR},
-      f_sys_del_user = #{sysDelUser,jdbcType=VARCHAR},
+      f_sys_add_user = #{sysAddUser,jdbcType=BIGINT},
+      f_sys_upd_user = #{sysUpdUser,jdbcType=BIGINT},
+      f_sys_del_user = #{sysDelUser,jdbcType=BIGINT},
       f_sys_del_state = #{sysDelState,jdbcType=BIT}
+    where f_id = #{id,jdbcType=BIGINT}
+      and f_req_start_time = #{reqStartTime,jdbcType=TIMESTAMP}
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      @project https://github.com/itfsw/mybatis-generator-plugin
+    -->
+    insert into t_comm_logger
+    (f_id, f_req_start_time, f_user_id, f_user_acc_no, f_user_acc_type, f_action_url_tail, f_action_url_all, f_action_res_code, f_is_undefined_exception, f_ip, f_device_id, f_os, f_os_version, f_req_deal_time, f_req_end_time, f_sys_add_time, f_sys_upd_time, f_sys_del_time, f_sys_add_user, f_sys_upd_user, f_sys_del_user, f_sys_del_state, f_request_params, f_excep_stack_info, f_response_data)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.reqStartTime,jdbcType=TIMESTAMP}, #{item.userId,jdbcType=BIGINT}, #{item.userAccNo,jdbcType=VARCHAR}, #{item.userAccType,jdbcType=TINYINT}, #{item.actionUrlTail,jdbcType=VARCHAR}, #{item.actionUrlAll,jdbcType=VARCHAR}, #{item.actionResCode,jdbcType=VARCHAR}, #{item.isUndefinedException,jdbcType=BIT}, #{item.ip,jdbcType=VARCHAR}, #{item.deviceId,jdbcType=VARCHAR}, #{item.os,jdbcType=VARCHAR}, #{item.osVersion,jdbcType=VARCHAR}, #{item.reqDealTime,jdbcType=INTEGER}, #{item.reqEndTime,jdbcType=TIMESTAMP}, #{item.sysAddTime,jdbcType=TIMESTAMP}, #{item.sysUpdTime,jdbcType=TIMESTAMP}, #{item.sysDelTime,jdbcType=TIMESTAMP}, #{item.sysAddUser,jdbcType=BIGINT}, #{item.sysUpdUser,jdbcType=BIGINT}, #{item.sysDelUser,jdbcType=BIGINT}, #{item.sysDelState,jdbcType=BIT}, #{item.requestParams,jdbcType=LONGVARCHAR}, #{item.excepStackInfo,jdbcType=LONGVARCHAR}, #{item.responseData,jdbcType=LONGVARCHAR})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      @project https://github.com/itfsw/mybatis-generator-plugin
+    -->
+    insert into t_comm_logger (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'f_id' == column.value">
+          #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'f_req_start_time' == column.value">
+          #{item.reqStartTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'f_user_id' == column.value">
+          #{item.userId,jdbcType=BIGINT}
+        </if>
+        <if test="'f_user_acc_no' == column.value">
+          #{item.userAccNo,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_user_acc_type' == column.value">
+          #{item.userAccType,jdbcType=TINYINT}
+        </if>
+        <if test="'f_action_url_tail' == column.value">
+          #{item.actionUrlTail,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_action_url_all' == column.value">
+          #{item.actionUrlAll,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_action_res_code' == column.value">
+          #{item.actionResCode,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_is_undefined_exception' == column.value">
+          #{item.isUndefinedException,jdbcType=BIT}
+        </if>
+        <if test="'f_ip' == column.value">
+          #{item.ip,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_device_id' == column.value">
+          #{item.deviceId,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_os' == column.value">
+          #{item.os,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_os_version' == column.value">
+          #{item.osVersion,jdbcType=VARCHAR}
+        </if>
+        <if test="'f_req_deal_time' == column.value">
+          #{item.reqDealTime,jdbcType=INTEGER}
+        </if>
+        <if test="'f_req_end_time' == column.value">
+          #{item.reqEndTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'f_sys_add_time' == column.value">
+          #{item.sysAddTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'f_sys_upd_time' == column.value">
+          #{item.sysUpdTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'f_sys_del_time' == column.value">
+          #{item.sysDelTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'f_sys_add_user' == column.value">
+          #{item.sysAddUser,jdbcType=BIGINT}
+        </if>
+        <if test="'f_sys_upd_user' == column.value">
+          #{item.sysUpdUser,jdbcType=BIGINT}
+        </if>
+        <if test="'f_sys_del_user' == column.value">
+          #{item.sysDelUser,jdbcType=BIGINT}
+        </if>
+        <if test="'f_sys_del_state' == column.value">
+          #{item.sysDelState,jdbcType=BIT}
+        </if>
+        <if test="'f_request_params' == column.value">
+          #{item.requestParams,jdbcType=LONGVARCHAR}
+        </if>
+        <if test="'f_excep_stack_info' == column.value">
+          #{item.excepStackInfo,jdbcType=LONGVARCHAR}
+        </if>
+        <if test="'f_response_data' == column.value">
+          #{item.responseData,jdbcType=LONGVARCHAR}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+  <update id="logicalDeleteByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      @project https://github.com/itfsw/mybatis-generator-plugin
+    -->
+    update t_comm_logger commLogger set f_sys_del_state = 1
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="logicalDeleteByPrimaryKey" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      @project https://github.com/itfsw/mybatis-generator-plugin
+    -->
+    update t_comm_logger commLogger set f_sys_del_state = 1
     where f_id = #{id,jdbcType=BIGINT}
       and f_req_start_time = #{reqStartTime,jdbcType=TIMESTAMP}
   </update>

@@ -13,9 +13,9 @@ public class BaseDomain {
     private Date sysAddTime;
     private Date sysUpdTime;
     private Date sysDelTime;
-    private String sysAddUser;
-    private String sysUpdUser;
-    private String sysDelUser;
+    private Long sysAddUser;
+    private Long sysUpdUser;
+    private Long sysDelUser;
     private Boolean sysDelState;
 
     public Date getSysAddTime() {
@@ -50,27 +50,27 @@ public class BaseDomain {
         this.sysDelTime = sysDelTime;
     }
 
-    public String getSysAddUser() {
+    public Long getSysAddUser() {
         return sysAddUser;
     }
 
-    public void setSysAddUser(String sysAddUser) {
+    public void setSysAddUser(Long sysAddUser) {
         this.sysAddUser = sysAddUser;
     }
 
-    public String getSysUpdUser() {
+    public Long getSysUpdUser() {
         return sysUpdUser;
     }
 
-    public void setSysUpdUser(String sysUpdUser) {
+    public void setSysUpdUser(Long sysUpdUser) {
         this.sysUpdUser = sysUpdUser;
     }
 
-    public String getSysDelUser() {
+    public Long getSysDelUser() {
         return sysDelUser;
     }
 
-    public void setSysDelUser(String sysDelUser) {
+    public void setSysDelUser(Long sysDelUser) {
         this.sysDelUser = sysDelUser;
     }
 }

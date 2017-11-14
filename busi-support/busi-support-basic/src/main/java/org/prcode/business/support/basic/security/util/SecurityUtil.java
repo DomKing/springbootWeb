@@ -49,7 +49,7 @@ public class SecurityUtil {
      * 获取当前用户ID
      * @return
      */
-    public static String getOperId() {
+    public static Long getOperId() {
         CustomerUserDetail userDetail = getCurrUserDetail();
         return userDetail == null ? null : userDetail.getId();
     }
@@ -58,7 +58,7 @@ public class SecurityUtil {
      * 获取当前用户ID
      * @return
      */
-    public static String getOperIdMustExist() throws LoginTimeout {
+    public static Long getOperIdMustExist() throws LoginTimeout {
         CustomerUserDetail userDetail = getCurrUserDetail();
         if (userDetail == null) {
             throw new LoginTimeout("登录信息已过期");

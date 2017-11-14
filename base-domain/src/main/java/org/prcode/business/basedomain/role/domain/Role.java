@@ -39,7 +39,7 @@ public class Role extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    private String id;
+    private Long id;
 
     /**
      *
@@ -102,7 +102,7 @@ public class Role extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -114,8 +114,8 @@ public class Role extends BaseDomain implements Serializable {
      *
      * @mbg.generated
      */
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
