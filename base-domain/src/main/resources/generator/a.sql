@@ -148,7 +148,7 @@ DROP TABLE IF EXISTS `t_user_role`;
 DROP TABLE IF EXISTS `t_user_role`;
 CREATE TABLE IF NOT EXISTS `t_user_role` (
   `f_id` bigint(32) NOT NULL COMMENT 'ID',
-  `f_user_id` bigint(100) NOT NULL COMMENT 'userId',
+  `f_user_id` bigint(32) NOT NULL COMMENT 'userId',
   `f_role_id` bigint(32) NOT NULL COMMENT 'roleId',
   `f_sys_add_time` datetime DEFAULT NULL COMMENT '新增时间',
   `f_sys_upd_time` datetime DEFAULT NULL COMMENT '修改时间',

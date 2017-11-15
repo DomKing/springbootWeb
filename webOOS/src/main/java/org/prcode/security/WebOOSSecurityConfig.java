@@ -74,7 +74,7 @@ public class WebOOSSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login").failureUrl("/login?error").successForwardUrl("/").permitAll()
                 .successHandler(loginSuccessHandler)
                 .and().authorizeRequests().antMatchers("/css/**","/images/**", "/js/**", "/html/**").permitAll()
-                .and().authorizeRequests().antMatchers("/logoutSuccess", "/deny").permitAll()
+                .and().authorizeRequests().antMatchers("/logoutSuccess", "/deny", "/test").permitAll()
                 .anyRequest().authenticated()
                 .and().logout().logoutSuccessUrl("/logoutSuccess")
                 .and().exceptionHandling().accessDeniedPage("/deny")

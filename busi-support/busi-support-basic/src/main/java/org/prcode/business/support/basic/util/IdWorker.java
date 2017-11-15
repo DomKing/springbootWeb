@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.annotation.PreDestroy;
 
+import org.apache.log4j.Logger;
 import org.prcode.utility.util.SequenceUtil;
 import org.springframework.stereotype.Component;
 
@@ -17,37 +18,38 @@ import org.springframework.stereotype.Component;
 @Component
 public class IdWorker {
 
-    private Long workerId;
-    private Long dataCenterId;
-    private SequenceUtil sequenceUtil;
+    private static Long workerId;
+    private static Long dataCenterId;
+    private static SequenceUtil sequenceUtil;
     private static final SecureRandom RAND = new SecureRandom();
-    private static final int RAND_AREA = 31;
+    private static final int RAND_AREA = 2 << 4;
     private static final String ID_WORKER_CONFIG_PREFIX = "idWorker:config:";
 
-    private static IdWorker ourInstance = new IdWorker();
+    private static final Logger logger = Logger.getLogger(IdWorker.class);
 
-    public static IdWorker getInstance() {
-        if (ourInstance.workerId == null || ourInstance.dataCenterId == null) {
-            long workerId = RAND.nextInt(RAND_AREA);
-            long centerId = RAND.nextInt(RAND_AREA);
-            while (RedisUtil.exists(ID_WORKER_CONFIG_PREFIX + centerId + "_" + workerId)) {
-                workerId = RAND.nextInt(RAND_AREA);
-                centerId = RAND.nextInt(RAND_AREA);
+    private static SequenceUtil getSequenceUtil() {
+        if (sequenceUtil == null) {
+            long worker = RAND.nextInt(RAND_AREA);
+            long center = RAND.nextInt(RAND_AREA);
+            while (RedisUtil.exists(ID_WORKER_CONFIG_PREFIX + center + "_" + worker)) {
+                worker = RAND.nextInt(RAND_AREA);
+                center = RAND.nextInt(RAND_AREA);
             }
-            ourInstance.workerId = workerId;
-            ourInstance.dataCenterId = centerId;
+            workerId = worker;
+            dataCenterId = center;
+            sequenceUtil = new SequenceUtil(workerId, dataCenterId);
+            RedisUtil.set(ID_WORKER_CONFIG_PREFIX + dataCenterId + "_" + workerId, "1");
         }
-        return ourInstance;
+        return sequenceUtil;
     }
-
-    private IdWorker() {
-    }
-
 
     @PreDestroy
     public void destroy() {
-        String key = ID_WORKER_CONFIG_PREFIX + dataCenterId + "_" + workerId;
-        RedisUtil.del(key);
+        if (dataCenterId != null && workerId != null) {
+            String key = ID_WORKER_CONFIG_PREFIX + dataCenterId + "_" + workerId;
+            logger.debug("服务终止，安全移除IdWorker在redis中的注册号：" + key);
+            RedisUtil.del(key);
+        }
     }
 
     /**
@@ -59,7 +61,6 @@ public class IdWorker {
     }
 
     public static Long getLongId() {
-        IdWorker idWorker = getInstance();
-        return new SequenceUtil(idWorker.workerId, idWorker.dataCenterId).nextId();
+        return getSequenceUtil().nextId();
     }
 }

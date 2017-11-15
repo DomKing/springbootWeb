@@ -6,10 +6,13 @@ import org.prcode.business.core.security.resourceUrl.dao.ResourceUrlDao;
 import org.prcode.business.core.security.resourceUrl.entity.Menu;
 import org.prcode.business.support.basic.SystemConstant;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
+import org.prcode.business.support.basic.util.IdWorker;
+import org.prcode.business.support.basic.util.RedisUtil;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -31,6 +34,13 @@ public class SecurityController {
     @Resource
     private ResourceUrlDao resourceUrlDao;
 
+    @GetMapping("/test")
+    @ResponseBody
+    public String test() {
+        RedisUtil.set("test", "testtt");
+        Long longId = IdWorker.getLongId();
+        return "ok" + longId;
+    }
     @GetMapping(value = "")
     public String index() {
         ResourceUrlExample example = new ResourceUrlExample();

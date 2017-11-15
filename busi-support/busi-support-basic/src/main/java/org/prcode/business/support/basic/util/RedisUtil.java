@@ -23,7 +23,13 @@ public class RedisUtil {
     private static final Logger logger = Logger.getLogger(RedisUtil.class);
 
 
-    private static RedisTemplate redisTemplate = (RedisTemplate) SpringUtil.getBean("redisTemplate");
+    private static RedisTemplate redisTemplate;
+    @Resource
+    public void setRedisTemplate(RedisTemplate redisTemplate) {
+        if (RedisUtil.redisTemplate == null) {
+            RedisUtil.redisTemplate = redisTemplate;
+        }
+    }
 
     /**
      * 批量删除对应的value
