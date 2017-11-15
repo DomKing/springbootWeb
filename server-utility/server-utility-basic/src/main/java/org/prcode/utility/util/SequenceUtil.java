@@ -1,5 +1,7 @@
 package org.prcode.utility.util;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * 基于Twitter的Snowflake算法实现分布式高效有序ID生产黑科技(sequence)
  *
@@ -108,8 +110,10 @@ public class SequenceUtil {
                 timestamp = tilNextMillis(lastTimestamp);
             }
         } else {// 时间戳改变，毫秒内序列重置
-            sequence = 0L;
+//            sequence = 0L;
+            sequence = ThreadLocalRandom.current().nextLong(0, 2);
         }
+
         // 上次生成ID的时间截
         lastTimestamp = timestamp;
 
