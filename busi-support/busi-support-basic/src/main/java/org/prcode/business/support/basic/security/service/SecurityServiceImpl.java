@@ -21,7 +21,7 @@ import java.util.List;
  * @author: kangduo
  * @description: (安全相关service)
  */
-@Service("SecurityService")
+@Service("securityService")
 public class SecurityServiceImpl implements SecurityService {
 
     @Resource

@@ -1,18 +1,24 @@
 package org.prcode.business.support.basic.messageConverter;
 
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 import org.prcode.business.support.basic.messageConverter.annotation.CacheDuration;
-import org.prcode.utility.util.ClassUtil;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
-
-import java.lang.reflect.Method;
-import java.util.*;
 
 import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
 
@@ -22,26 +28,36 @@ import static org.springframework.core.annotation.AnnotationUtils.findAnnotation
  * @author: kangduo
  * @description: (自定义redisCacheManager)
  */
-public class CustomerRedisCacheManager extends RedisCacheManager implements InitializingBean {
+public class CustomerRedisCacheManager extends RedisCacheManager implements ApplicationContextAware, InitializingBean {
 
     private static final String BASE_SCAN_PACKAGE = "org.prcode.business";
     private static final Logger logger = Logger.getLogger(CustomerRedisCacheManager.class);
+
+    private ApplicationContext applicationContext;
     public CustomerRedisCacheManager(RedisOperations redisOperations) {
         super(redisOperations);
     }
 
     @Override
-    public void afterPropertiesSet() {
-        parseCacheDuration();
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
     }
 
-    private void parseCacheDuration() {
+    @Override
+    public void afterPropertiesSet() {
+        parseCacheDuration(applicationContext);
+    }
+
+    private void parseCacheDuration(ApplicationContext applicationContext) {
         final Map<String, Long> cacheExpires = new HashMap<>();
-        //扫描service，这里不用spring直接获取bean，是因为有的service拿不到注解，原因暂未明
-        List<Class> classes = ClassUtil.scanPackage(BASE_SCAN_PACKAGE,
-                clazz -> findAnnotation(clazz, Service.class) != null);
-        for (Class aClass : classes) {
-            addCacheExpires(aClass, cacheExpires);
+        String[] beanNames = applicationContext.getBeanNamesForType(Object.class);
+        for (String beanName : beanNames) {
+            final Class clazz = applicationContext.getType(beanName);
+            Service service = findAnnotation(clazz, Service.class);
+            if (null == service) {
+                continue;
+            }
+            addCacheExpires(clazz, cacheExpires);
         }
         logger.debug("初始化redisCacheManager, 配置有过期时间的key, 内容如下：" + cacheExpires);
         //设置有效期

@@ -37,8 +37,9 @@ public class ClassUtil {
      * @param packageName 包名
      */
     private static void ckeckNullPackageName(String packageName) {
-        if (packageName == null || packageName.trim().length() == 0)
+        if (packageName == null || packageName.trim().length() == 0) {
             throw new NullPointerException(ERROR_MESSAGE);
+        }
     }
 
     /**
