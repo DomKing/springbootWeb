@@ -44,6 +44,10 @@
             <p class="bg-info">无更多显示信息</p>
         </div>
 
+        <div sec:authorize-url="/testttt">
+            <p class="bg-info"> can see this testttt </p>
+        </div>
+
         <!--菜单配置最大三层，这里只循环三层-->
         <ul>
             <li th:each="menu1:${session.menuList}" th:if="${menu1.level} == 1">

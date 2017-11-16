@@ -6,23 +6,23 @@ package org.prcode.utility.exception;
  * @author: kangduo
  * @description: (登录超时异常)
  */
-public class LoginTimeout extends Exception {
+public class LoginTimeoutException extends RuntimeException {
 
     private static final long serialVersionUID = 1752633971985729891L;
 
-    public LoginTimeout() {
+    public LoginTimeoutException() {
         super();
     }
 
-    public LoginTimeout(String message) {
+    public LoginTimeoutException(String message) {
         super(message);
     }
 
-    public LoginTimeout(String message, Throwable cause) {
+    public LoginTimeoutException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public LoginTimeout(Throwable cause) {
+    public LoginTimeoutException(Throwable cause) {
         super(cause);
     }
 }

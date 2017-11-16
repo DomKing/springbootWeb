@@ -34,6 +34,13 @@ public class SecurityController {
     @Resource
     private ResourceUrlDao resourceUrlDao;
 
+    @GetMapping("/testttt")
+    @ResponseBody
+    public String testttt() {
+        RedisUtil.set("test", "testtt");
+        return "ok";
+    }
+
     @GetMapping("/test")
     @ResponseBody
     public String test() {

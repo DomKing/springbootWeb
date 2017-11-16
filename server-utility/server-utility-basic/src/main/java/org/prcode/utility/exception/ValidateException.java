@@ -6,7 +6,7 @@ package org.prcode.utility.exception;
  * @author: kangduo
  * @description: (校验异常, 入参不合法)
  */
-public class ValidateException extends Exception {
+public class ValidateException extends RuntimeException {
 
     private static final long serialVersionUID = 2352667757409387226L;
 

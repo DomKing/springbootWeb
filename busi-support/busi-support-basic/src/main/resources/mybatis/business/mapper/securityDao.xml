@@ -38,7 +38,7 @@
          from t_role_resource rr
         inner join t_resource_url ru on ru.f_sys_del_state = 0 and ru.f_id = rr.f_resource_url_id
         inner join t_role r on r.f_sys_del_state = 0 and r.f_role_state = 1 and r.f_id = rr.f_role_id
-        where rr.f_sys_del_state = 0 and r.f_system_code = #{systemCode} and ru.f_system_code = #{systemCode}
+        where rr.f_sys_del_state = 0 and r.f_system_code = #{systemCode} and ru.f_system_code = #{systemCode} and ru.f_is_menu = 0
     </select>
 
 </mapper>

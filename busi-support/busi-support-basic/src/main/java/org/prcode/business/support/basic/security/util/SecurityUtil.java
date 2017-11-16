@@ -2,7 +2,7 @@ package org.prcode.business.support.basic.security.util;
 
 import org.apache.log4j.Logger;
 import org.prcode.business.support.basic.security.domain.CustomerUserDetail;
-import org.prcode.utility.exception.LoginTimeout;
+import org.prcode.utility.exception.LoginTimeoutException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -58,10 +58,10 @@ public class SecurityUtil {
      * 获取当前用户ID
      * @return
      */
-    public static Long getOperIdMustExist() throws LoginTimeout {
+    public static Long getOperIdMustExist() {
         CustomerUserDetail userDetail = getCurrUserDetail();
         if (userDetail == null) {
-            throw new LoginTimeout("登录信息已过期");
+            throw new LoginTimeoutException("登录信息已过期");
         }
         return userDetail.getId();
     }

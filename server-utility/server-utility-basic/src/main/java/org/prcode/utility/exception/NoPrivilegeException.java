@@ -6,7 +6,7 @@ package org.prcode.utility.exception;
  * @author: kangduo
  * @description: (无权限异常)
  */
-public class NoPrivilegeException extends Exception{
+public class NoPrivilegeException extends RuntimeException{
 
     private static final long serialVersionUID = -1150060851781201693L;
 

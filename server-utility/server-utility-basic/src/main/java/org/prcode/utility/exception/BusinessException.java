@@ -6,7 +6,7 @@ package org.prcode.utility.exception;
  * @author: kangduo
  * @description: (业务异常, 如输入数据有问题导致的查询无结果, 业务不对等)
  */
-public class BusinessException extends Exception{
+public class BusinessException extends RuntimeException{
 
     private static final long serialVersionUID = 5433269823524347251L;
 

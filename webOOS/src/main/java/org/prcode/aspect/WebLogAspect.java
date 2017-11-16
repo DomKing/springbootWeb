@@ -23,7 +23,7 @@ import org.prcode.business.support.basic.security.domain.CustomerUserDetail;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
 import org.prcode.utility.basic.support.ResponseStatus;
 import org.prcode.utility.exception.BusinessException;
-import org.prcode.utility.exception.LoginTimeout;
+import org.prcode.utility.exception.LoginTimeoutException;
 import org.prcode.utility.exception.NoPrivilegeException;
 import org.prcode.utility.exception.ValidateException;
 import org.prcode.utility.util.ExceptionUtil;
@@ -99,7 +99,7 @@ public class WebLogAspect {
     }
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")
-    public void doAfterReturning(Object ret) throws Throwable {
+    public void doAfterReturning(Object ret) {
         // 处理完请求，返回内容
         WebOosLog commLogger = commLoggerThreadLocal.get();
         commLogger.setActionResCode(ResponseStatus.SUCCESS);
@@ -123,7 +123,7 @@ public class WebLogAspect {
             commLogger.setActionResCode(ResponseStatus.BUSINESS_FAILED);
         } else if (ex instanceof ValidateException) {
             commLogger.setActionResCode(ResponseStatus.VALIDATE_ERR);
-        } else if (ex instanceof LoginTimeout) {
+        } else if (ex instanceof LoginTimeoutException) {
             commLogger.setActionResCode(ResponseStatus.LOGIN_TIME_OUT);
         } else if (ex instanceof NoPrivilegeException) {
             commLogger.setActionResCode(ResponseStatus.NO_PRIVILEGE);

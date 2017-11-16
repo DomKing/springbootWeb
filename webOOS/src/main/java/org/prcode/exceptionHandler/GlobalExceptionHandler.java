@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import org.prcode.utility.basic.JsonResponse;
 import org.prcode.utility.basic.support.ResponseStatus;
 import org.prcode.utility.exception.BusinessException;
-import org.prcode.utility.exception.LoginTimeout;
+import org.prcode.utility.exception.LoginTimeoutException;
 import org.prcode.utility.exception.NoPrivilegeException;
 import org.prcode.utility.exception.ValidateException;
 import org.prcode.utility.util.StringUtil;
@@ -49,7 +49,7 @@ public class GlobalExceptionHandler {
         } else if (e instanceof ValidateException) {
             json.setStatus(ResponseStatus.VALIDATE_ERR);
             json.setMessage(e.getMessage());
-        } else if (e instanceof LoginTimeout) {
+        } else if (e instanceof LoginTimeoutException) {
             json.setStatus(ResponseStatus.LOGIN_TIME_OUT);
             json.setMessage(e.getMessage());
         } else if (e instanceof NoPrivilegeException) {
