@@ -24,7 +24,7 @@
 
     <select id="getUserDetailByName" resultMap="customerUserDetailResMap" parameterType="map">
         select u.f_id userId, ln.f_user_account username, ln.f_user_pwd password,ln.f_type accountType,ln.f_wechat_union_id unionId,
-                r.f_role_code roleCode, r.f_id roleId, r.f_role_name roleName, u.f_user_name nickName
+                r.f_role_code roleCode, r.f_id roleId, r.f_role_name roleName, u.f_nick_name nickName
           from t_login_no ln
         inner join t_user u ON ln.f_user_id = u.f_id and u.f_sys_del_state = 0
         left join t_user_role ur ON ur.f_sys_del_state = 0 and ur.f_user_id = u.f_id

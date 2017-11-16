@@ -6,7 +6,7 @@
         <id property="userId" column="uId" javaType="java.lang.Long"/>
         <result property="username" column="username" javaType="java.lang.String"/>
         <result property="mobile" column="mobile" javaType="java.lang.String"/>
-        <result property="userAccount" column="userAccount" javaType="java.lang.String"/>
+        <result property="nickname" column="nickname" javaType="java.lang.String"/>
         <result property="userState" column="userState" javaType="java.lang.Byte"/>
         <collection property="roleList" ofType="org.prcode.business.core.security.account.entity.UserHasRole"
                     select="getUserRoles" column="{uId = uId, systemCode = systemCode}"/>
@@ -19,8 +19,8 @@
     </resultMap>
 
     <select id="getUserAccountList" parameterType="map" resultMap="userAccountMap">
-        select u.f_id uId, u.f_user_name username, f_real_name realName, u.f_mobile mobile,
-          ln.f_user_account userAccount, u.f_state userState, #{systemCode} systemCode
+        select u.f_id uId, u.f_nick_name nickname, f_real_name realName, u.f_mobile mobile,
+          ln.f_user_account username, u.f_state userState, #{systemCode} systemCode
         from t_user u
         inner join t_login_no ln on ln.f_sys_del_state = 0 and ln.f_user_id = u.f_id
         where u.f_sys_del_state = 0 AND ln.f_type = #{accountType}
@@ -44,8 +44,8 @@
     </select>
 
     <select id="getUserAccount" parameterType="map" resultMap="userAccountMap">
-        select u.f_id uId, u.f_user_name username, f_real_name realName, u.f_mobile mobile,
-        ln.f_user_account userAccount, u.f_state userState, #{systemCode} systemCode
+        select u.f_id uId, u.f_nick_name nickname, f_real_name realName, u.f_mobile mobile,
+        ln.f_user_account username, u.f_state userState, #{systemCode} systemCode
         from t_user u
         inner join t_login_no ln on ln.f_sys_del_state = 0 and ln.f_user_id = u.f_id
         where u.f_sys_del_state = 0 and u.f_id = #{userId} AND ln.f_type = #{accountType}

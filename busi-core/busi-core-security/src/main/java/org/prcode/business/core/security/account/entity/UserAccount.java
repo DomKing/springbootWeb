@@ -25,14 +25,13 @@ public class UserAccount implements Serializable {
     /**
      * loginNo中的userAccount
      */
+    @ValidateRegexp(regexp = "^[a-zA-Z0-9]{5,20}$", message = "账号需为5到20的字母或数字", groups = Create.class)
     private String username;
 
     /**
-     * t_user中的username
+     * t_user中的nickname
      */
-    @ValidateRegexp(regexp = "^[a-zA-Z0-9]{5,20}$", message = "账号需为5到20的字母或数字", groups = Create.class)
-    private String userAccount;
-
+    private String nickname;
     private String realName;
     @ValidateRegexp(regexp = "^(?!\\d+$)(?![a-zA-Z]+$)[0-9a-zA-Z]{6,16}$", message = "密码需为6-16位字符(字母与数字的组合)", groups = Create.class)
     private String password;
@@ -63,12 +62,12 @@ public class UserAccount implements Serializable {
         this.username = username;
     }
 
-    public String getUserAccount() {
-        return userAccount;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUserAccount(String userAccount) {
-        this.userAccount = userAccount;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getRealName() {

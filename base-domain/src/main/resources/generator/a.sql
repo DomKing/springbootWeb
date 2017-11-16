@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE IF NOT EXISTS `t_user` (
   `f_id` bigint(32) NOT NULL COMMENT 'userId',
-  `f_user_name` varchar(100) NOT NULL COMMENT '用户名',
+  `f_nick_name` varchar(100) NOT NULL COMMENT '昵称',
   `f_real_name` varchar(100) DEFAULT NULL COMMENT '真实姓名',
   `f_id_card` varchar(20) DEFAULT NULL COMMENT '身份证号',
   `f_pay_pwd` varchar(100) DEFAULT NULL COMMENT '支付密码',
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `t_user_role` (
   CONSTRAINT `fk_userRole_userId` FOREIGN KEY (`f_user_id`) REFERENCES `t_user` (`f_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户角色表';
 
-INSERT INTO `t_user` (`f_id`, `f_user_name`, `f_real_name`, `f_id_card`, `f_pay_pwd`, `f_mobile`, `f_state`, `f_last_pwdmod_time`, `f_device_id`, `f_sys_add_time`, `f_sys_upd_time`, `f_sys_del_time`, `f_sys_add_user`, `f_sys_upd_user`, `f_sys_del_user`, `f_sys_del_state`) VALUES (1, 'admin', '管理员', NULL, NULL, '17688709202', 1, NULL, NULL, '2017-04-16 15:52:40', NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `t_user` (`f_id`, `f_nick_name`, `f_real_name`, `f_id_card`, `f_pay_pwd`, `f_mobile`, `f_state`, `f_last_pwdmod_time`, `f_device_id`, `f_sys_add_time`, `f_sys_upd_time`, `f_sys_del_time`, `f_sys_add_user`, `f_sys_upd_user`, `f_sys_del_user`, `f_sys_del_state`) VALUES (1, 'admin', '管理员', NULL, NULL, '17688709202', 1, NULL, NULL, '2017-04-16 15:52:40', NULL, NULL, NULL, NULL, NULL, 0);
 
 INSERT INTO `t_login_no` (`f_id`, `f_user_id`, `f_user_account`, `f_user_pwd`, `f_type`, `f_wechat_union_id`, `f_sys_add_time`, `f_sys_upd_time`, `f_sys_del_time`, `f_sys_add_user`, `f_sys_upd_user`, `f_sys_del_user`, `f_sys_del_state`) VALUES (1, 1, 'kangduo', '$2a$10$MNADoB/kM4CfrMri/Cp8O.OT5aNx3f8HkNodosYQUNBIIg3WmN.fC', 4, NULL, '2017-04-19 21:01:59', NULL, NULL, NULL, NULL, NULL, 0);
 

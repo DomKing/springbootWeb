@@ -25,6 +25,7 @@ public class CustomerUserDetailService implements UserDetailsService {
     @Resource
     private SecurityService securityService;
 
+    @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();

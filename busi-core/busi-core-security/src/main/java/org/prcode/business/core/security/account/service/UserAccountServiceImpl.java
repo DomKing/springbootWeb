@@ -73,7 +73,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         LoginNoExample example = new LoginNoExample();
         example.createCriteria()
                 .andSysDelStateEqualTo(false)
-                .andUserAccountEqualTo(account.getUserAccount())
+                .andUserAccountEqualTo(account.getUsername())
                 .andTypeEqualTo(accountType);
         if (loginNoMapper.countByExample(example) > 0) {
             throw new BusinessException("该账号已存在");
@@ -112,7 +112,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     private User addUser(UserAccount account, Date now, Long operId) {
         User user = new User();
         user.setId(IdWorker.getLongId());
-        user.setUserName(account.getUserAccount());
+        user.setNickName(account.getUsername());
         user.setSysAddTime(now);
         user.setSysAddUser(operId);
         userMapper.insertSelective(user);
@@ -124,7 +124,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         loginNo.setId(IdWorker.getLongId());
         loginNo.setType(accountType);
         loginNo.setUserId(userId);
-        loginNo.setUserAccount(account.getUsername() == null? account.getUserAccount() : account.getUsername());
+        loginNo.setUserAccount(account.getUsername());
         loginNo.setUserPwd(bCryptPasswordEncoder.encode(account.getPassword()));
         loginNo.setWechatUnionId(account.getUnionId());
         loginNo.setSysAddTime(now);
