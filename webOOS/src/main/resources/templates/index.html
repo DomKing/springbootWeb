@@ -37,10 +37,11 @@
         <div sec:authorize="!isAuthenticated()">
             没登录才可以看见
         </div>
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <div sec:authorize="hasRole('ADMIN')">
             <p class="bg-info">管理员才显示这一行</p>
         </div>
-        <div sec:authorize="hasRole('ROLE_USER')">
+        <div sec:authorize="hasRole('USER')">
+        <div sec:authorize="hasRole('USER')">
             <p class="bg-info">无更多显示信息</p>
         </div>
 
@@ -78,4 +79,46 @@
     </div>
 </div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(function () {
+
+        var prefixUrl = 'ws://localhost:8086/ws/order/';
+
+        var ws;//WebSocket连接对象
+
+        //判断当前浏览器是否支持WebSocket
+        if (!('WebSocket' in window)) {
+            alert('Not support websocket');
+        } else {
+            //创建WebSocket连接对象
+            ws = new WebSocket(prefixUrl);
+            //连接成功建立的回调方法
+            ws.onopen = function (event) {
+                console.log('建立websocket连接')
+            };
+            //连接发生错误的回调方法
+            ws.onerror = function (event) {
+                console.log('websocket发生错误')
+            };
+
+            //连接关闭的回调方法
+            ws.onclose = function (event) {
+                console.log('websocket关闭连接')
+            };
+
+            //接收到消息的回调方法
+            ws.onmessage = function (event) {
+                console.log('接收到内容：' + event.data);
+            }
+        }
+
+        //监听窗口关闭事件，当窗口关闭或刷新时，主动去关闭websocket连接。
+        window.onbeforeunload = function () {
+            if (typeof ws !== 'undefined') {
+                ws.close();
+            }
+        };
+    })
+</script>
 </html>

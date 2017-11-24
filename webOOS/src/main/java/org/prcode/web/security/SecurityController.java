@@ -1,24 +1,24 @@
 package org.prcode.web.security;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.prcode.business.basedomain.resourceUrl.domain.ResourceUrlExample;
 import org.prcode.business.core.security.resourceUrl.dao.ResourceUrlDao;
 import org.prcode.business.core.security.resourceUrl.entity.Menu;
 import org.prcode.business.support.basic.SystemConstant;
 import org.prcode.business.support.basic.security.util.SecurityUtil;
-import org.prcode.business.support.basic.util.IdWorker;
-import org.prcode.business.support.basic.util.RedisUtil;
+import org.prcode.socket.OrderNotificationEndPoint;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
 
 /**
  * @className: SecurityController
@@ -33,21 +33,17 @@ public class SecurityController {
 
     @Resource
     private ResourceUrlDao resourceUrlDao;
-
-    @GetMapping("/testttt")
-    @ResponseBody
-    public String testttt() {
-        RedisUtil.set("test", "testtt");
-        return "ok";
-    }
+    @Resource
+    private OrderNotificationEndPoint orderNotificationEndPoint;
 
     @GetMapping("/test")
     @ResponseBody
-    public String test() {
-        RedisUtil.set("test", "testtt");
-        Long longId = IdWorker.getLongId();
-        return "ok" + longId;
+    public String testttt() {
+        orderNotificationEndPoint.sendMessageToAll("hello everyone~");
+        return "ok";
     }
+
+
     @GetMapping(value = "")
     public String index() {
         ResourceUrlExample example = new ResourceUrlExample();
